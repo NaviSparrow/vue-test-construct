@@ -1,7 +1,7 @@
 export const Navigation = {
   Favorite: "favorite",
   Storage: "storage",
-  Deal: "deal",
+  Deals: "deals",
 };
 
 export const Sort = {

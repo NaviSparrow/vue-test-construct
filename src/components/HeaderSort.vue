@@ -49,7 +49,7 @@ export default {
   name: "HeaderSort",
   methods: {
     ...mapMutations({
-      setCurrentSort: "main/setCurrentSort"
+      setCurrentSort: "main/setCurrentSort",
     }),
     buttonClickHandled(evt) {
       this.setCurrentSort(evt.target.value);
