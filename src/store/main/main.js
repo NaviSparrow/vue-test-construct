@@ -12,16 +12,27 @@ export const Main = {
     searchTerm: "",
   }),
   getters: {
-    sortedOffers(state) {
-      if (state.currentSort === Sort.All) {
-        return state.offersList;
-      }
-      return state.offersList
-        .slice()
-        .filter((offer) => offer.type === state.currentSort);
+    getSortedOffers(state) {
+      return function (offers) {
+        if (state.currentSort === Sort.All) {
+          return offers;
+        }
+        return offers
+          .slice()
+          .filter((offer) => offer.type === state.currentSort);
+      };
     },
-    filteredOffers(state, getters) {
-      return getters.sortedOffers.filter((offer) =>
+    sortedAllOffers(state, getters) {
+      return getters.getSortedOffers(state.offersList);
+    },
+    sortedPaidOffers(state, getters) {
+      return getters.getSortedOffers(state.paidOffers);
+    },
+    sortedFavoritesOffers(state, getters) {
+      return getters.getSortedOffers(state.favoriteOffers);
+    },
+    sortedAndSearchedOffers(state, getters) {
+      return getters.sortedAllOffers.filter((offer) =>
         offer.title.includes(state.searchTerm)
       );
     },
