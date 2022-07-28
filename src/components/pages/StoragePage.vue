@@ -7,7 +7,7 @@
     <div class="page-main__wrapper">
       <h1 class="visually-hidden">Каталог</h1>
       <div class="page-main__header controls">
-        <header-sort :current-sort="currentSort" />
+        <header-sort />
         <header-search
           :search-term="searchTerm"
           @update:serach-term="setSearchTerm"
@@ -35,11 +35,7 @@ export default {
   components: { PageCatalog, HeaderSearch, HeaderSort, PageHeader },
   computed: {
     ...mapState({
-      offersList: (state) => state.main.offersList,
       isDataLoaded: (state) => state.main.isDataLoaded,
-      currentPage: (state) => state.main.currentPage,
-      currentSort: (state) => state.main.currentSort,
-      searchTerm: (state) => state.main.searchTerm,
     }),
     ...mapGetters({
       filteredOffers: "main/filteredOffers",
@@ -48,7 +44,6 @@ export default {
   methods: {
     ...mapMutations({
       setSearchTerm: "main/setSearchTerm",
-      setCurrentSort: "main/setCurrentSort",
       setCurrentPage: "main/setCurrentPage",
     }),
     ...mapActions({
