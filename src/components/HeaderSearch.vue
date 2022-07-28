@@ -2,9 +2,14 @@
   <section class="controls__search search">
     <h2 class="visually-hidden">Поиск</h2>
     <label class="search__control">
-      <input class="search__input" type="text" name="search" />
+      <input
+        v-model="currentTerm"
+        class="search__input"
+        type="text"
+        name="search"
+      />
       <span class="visually-hidden">Поиск.</span>
-      <button class="search__button" type="button">
+      <button class="search__button" type="button" @click="searchClickHandler">
         <span class="visually-hidden">Кнопка поиска.</span>
         <svg
           width="16"
@@ -26,8 +31,28 @@
 </template>
 
 <script>
+import { mapMutations, mapState } from "vuex";
+
 export default {
-  name: "AppSearch",
+  name: "HeaderSearch",
+  data() {
+    return {
+      currentTerm: "",
+    };
+  },
+  computed: {
+    ...mapState({
+      searchTerm: (state) => state.main.searchTerm,
+    }),
+  },
+  methods: {
+    ...mapMutations({
+      setSearchTerm: "main/setSearchTerm",
+    }),
+    searchClickHandler() {
+      this.setSearchTerm(this.currentTerm);
+    },
+  },
 };
 </script>
 

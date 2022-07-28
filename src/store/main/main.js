@@ -33,7 +33,7 @@ export const Main = {
     },
     sortedAndSearchedOffers(state, getters) {
       return getters.sortedAllOffers.filter((offer) =>
-        offer.title.includes(state.searchTerm)
+        offer.title.toLowerCase().includes(state.searchTerm.toLowerCase())
       );
     },
   },
