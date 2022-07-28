@@ -5,7 +5,7 @@ export const Navigation = {
 };
 
 export const Sort = {
-  All: "Все",
-  DirecSale: "Разовая продажа",
+  All: "Все типы",
+  DirectSale: "Разовая продажа",
   Auction: "Аукцион",
 };
