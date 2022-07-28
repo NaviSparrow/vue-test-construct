@@ -1,11 +1,8 @@
 <template>
-  <page-header
-    :current-page="currentPage"
-    @update:current-page="setCurrentPage"
-  />
+  <page-header />
   <main class="page-main">
     <div class="page-main__wrapper">
-      <h1 class="visually-hidden">Каталог</h1>
+      <h1 class="visually-hidden">Склад</h1>
       <div class="page-main__header controls">
         <header-sort />
         <header-search
@@ -13,7 +10,7 @@
           @update:serach-term="setSearchTerm"
         />
       </div>
-      <page-catalog :offers="filteredOffers" />
+      <page-catalog :offers="sortedAndSearchedOffers" />
     </div>
   </main>
   <footer class="page-footer">
@@ -38,7 +35,7 @@ export default {
       isDataLoaded: (state) => state.main.isDataLoaded,
     }),
     ...mapGetters({
-      filteredOffers: "main/filteredOffers",
+      sortedAndSearchedOffers: "main/sortedAndSearchedOffers",
     }),
   },
   methods: {
