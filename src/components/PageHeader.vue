@@ -13,7 +13,7 @@
                 focusable="false"
                 role="img"
               >
-                <use href="/images/svg/header-menu.svg#favorites"></use>
+                <use href="images/svg/header-menu.svg#favorites"></use>
               </svg>
               <span class="navigation__label">Избранное</span>
             </a>
@@ -27,7 +27,7 @@
                 focusable="false"
                 role="img"
               >
-                <use href="/images/svg/header-menu.svg#storage"></use>
+                <use href="images/svg/header-menu.svg#storage"></use>
               </svg>
               <span class="navigation__label">Склад</span>
             </a>
@@ -41,7 +41,7 @@
                 focusable="false"
                 role="img"
               >
-                <use href="/images/svg/header-menu.svg#deal"></use>
+                <use href="images/svg/header-menu.svg#deal"></use>
               </svg>
               <span class="navigation__label">Сделки</span>
             </a>
@@ -54,7 +54,7 @@
 
 <script>
 export default {
-  name: "AppHeader",
+  name: "PageHeader",
 };
 </script>
 
