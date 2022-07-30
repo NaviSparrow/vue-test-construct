@@ -2,19 +2,14 @@
   <page-header />
   <main class="page-main">
     <div class="page-main__wrapper">
-      <h1 class="visually-hidden">Сделки</h1>
+      <h1 class="visually-hidden">Избранное</h1>
       <div class="page-main__header controls">
         <header-sort />
       </div>
       <page-catalog :offers="sortedFavoritesOffers" />
     </div>
   </main>
-  <footer class="page-footer">
-    <h2 class="page-footer__title">
-      Developed by:
-      <span> Gorobec Ivan</span>
-    </h2>
-  </footer>
+  <page-footer />
 </template>
 
 <script>
@@ -22,9 +17,10 @@ import { mapGetters } from "vuex";
 import PageHeader from "@/components/PageHeader";
 import HeaderSort from "@/components/HeaderSort";
 import PageCatalog from "@/components/PageCatalog";
+import PageFooter from "@/components/PageFooter";
 
 export default {
-  components: { PageCatalog, HeaderSort, PageHeader },
+  components: { PageFooter, PageCatalog, HeaderSort, PageHeader },
   computed: {
     ...mapGetters({
       sortedFavoritesOffers: "main/sortedFavoritesOffers",

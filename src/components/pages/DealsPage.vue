@@ -9,12 +9,7 @@
       <page-catalog :offers="sortedDealOffers" />
     </div>
   </main>
-  <footer class="page-footer">
-    <h2 class="page-footer__title">
-      Developed by:
-      <span> Gorobec Ivan</span>
-    </h2>
-  </footer>
+  <page-footer />
 </template>
 
 <script>
@@ -22,9 +17,10 @@ import { mapGetters } from "vuex";
 import PageHeader from "@/components/PageHeader";
 import HeaderSort from "@/components/HeaderSort";
 import PageCatalog from "@/components/PageCatalog";
+import PageFooter from "@/components/PageFooter";
 
 export default {
-  components: { PageCatalog, HeaderSort, PageHeader },
+  components: { PageFooter, PageCatalog, HeaderSort, PageHeader },
   computed: {
     ...mapGetters({
       sortedDealOffers: "main/sortedDealOffers",
