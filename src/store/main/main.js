@@ -4,8 +4,9 @@ import fakejson from "../../../fake.json";
 export const Main = {
   state: () => ({
     offersList: [],
-    paidOffers: [],
+    dealOffers: [],
     favoriteOffers: [],
+    paidOffers: [],
     isDataLoaded: false,
     currentPage: Navigation.Storage,
     currentSort: Sort.All,
@@ -25,11 +26,17 @@ export const Main = {
     sortedAllOffers(state, getters) {
       return getters.getSortedOffers(state.offersList);
     },
-    sortedPaidOffers(state, getters) {
-      return getters.getSortedOffers(state.paidOffers);
+    dealList(state) {
+      return state.offersList.filter((offer) => offer.isDeal);
+    },
+    favoriteList(state) {
+      return state.offersList.filter((offer) => offer.isFavorite);
+    },
+    sortedDealOffers(state, getters) {
+      return getters.getSortedOffers(getters.dealList);
     },
     sortedFavoritesOffers(state, getters) {
-      return getters.getSortedOffers(state.favoriteOffers);
+      return getters.getSortedOffers(getters.favoriteList);
     },
     sortedAndSearchedOffers(state, getters) {
       return getters.sortedAllOffers.filter((offer) =>
@@ -41,11 +48,20 @@ export const Main = {
     setOffers(state, payload) {
       state.offersList = payload;
     },
-    setPaidOffers(state, payload) {
-      state.paidOffers = [...state.paidOffers, payload];
+    setDealOffers(state, payload) {
+      state.dealOffers = payload;
     },
     setFavoriteOffers(state, payload) {
-      state.favoriteOffers = [...state.favoriteOffers, payload];
+      state.favoriteOffers = payload;
+    },
+    changeList(state, payload) {
+      const index = state.offersList.findIndex(
+        (offer) => offer.id === payload.id
+      );
+      state.offersList[index] = {
+        ...state.offersList[index],
+        [payload.prop]: payload.newValue,
+      };
     },
     setIsDataLoaded(state, payload) {
       state.isDataLoaded = payload;
@@ -64,8 +80,16 @@ export const Main = {
     fetchOffers({ commit }) {
       setTimeout(() => {
         commit("setOffers", [...fakejson.offers]);
+        commit(
+          "setDealOffers",
+          fakejson.offers.filter((offer) => offer.isDeal)
+        );
+        commit(
+          "setFavoriteOffers",
+          fakejson.offers.filter((offer) => offer.isFavorite)
+        );
         commit("setIsDataLoaded", true);
-      }, 2000);
+      }, 1000);
     },
   },
   namespaced: true,

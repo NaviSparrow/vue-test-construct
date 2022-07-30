@@ -13,23 +13,19 @@
       <page-catalog :offers="sortedAndSearchedOffers" />
     </div>
   </main>
-  <footer class="page-footer">
-    <h2 class="page-footer__title">
-      Developed by:
-      <span> Gorobec Ivan</span>
-    </h2>
-  </footer>
+  <page-footer />
 </template>
 
 <script>
-import { mapState, mapGetters, mapActions, mapMutations } from "vuex";
+import { mapState, mapGetters, mapMutations } from "vuex";
 import PageHeader from "@/components/PageHeader";
 import HeaderSort from "@/components/HeaderSort";
 import HeaderSearch from "@/components/HeaderSearch";
 import PageCatalog from "@/components/PageCatalog";
+import PageFooter from "@/components/PageFooter";
 
 export default {
-  components: { PageCatalog, HeaderSearch, HeaderSort, PageHeader },
+  components: { PageFooter, PageCatalog, HeaderSearch, HeaderSort, PageHeader },
   computed: {
     ...mapState({
       isDataLoaded: (state) => state.main.isDataLoaded,
@@ -41,16 +37,8 @@ export default {
   methods: {
     ...mapMutations({
       setSearchTerm: "main/setSearchTerm",
-      setCurrentPage: "main/setCurrentPage",
     }),
-    ...mapActions({
-      fetchOffers: "main/fetchOffers",
-    }),
-  },
-  mounted() {
-    this.fetchOffers();
   },
 };
 </script>
-
 <style scoped></style>

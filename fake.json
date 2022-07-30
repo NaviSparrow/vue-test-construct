@@ -12,7 +12,7 @@
       "price": "55 000",
       "amount": 4,
       "priceForOne": "2 000",
-      "isFavorite": false,
+      "isFavorite": true,
       "isDeal": false,
       "isPaid": false
     },
@@ -29,7 +29,7 @@
       "amount": 5,
       "priceForOne": "13 000",
       "isFavorite": false,
-      "isDeal": false,
+      "isDeal": true,
       "isPaid": false
     },
     {
@@ -94,7 +94,7 @@
       "priceForOne": "10 000",
       "isFavorite": false,
       "isDeal": false,
-      "isPaid": true
+      "isPaid": false
     },
     {
       "id": 7,
@@ -126,7 +126,7 @@
       "priceForOne": "5 000",
       "isFavorite": false,
       "isDeal": false,
-      "isPaid": true
+      "isPaid": false
     },
     {
       "id": 9,
@@ -157,8 +157,8 @@
       "amount": 10,
       "priceForOne": "1 500",
       "isFavorite": false,
-      "isDeal": false,
-      "isPaid": true
+      "isDeal": true,
+      "isPaid": false
     },
     {
       "id": 11,
