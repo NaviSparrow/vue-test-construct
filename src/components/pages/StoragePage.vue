@@ -1,19 +1,22 @@
 <template>
-  <page-header />
-  <main class="page-main">
-    <div class="page-main__wrapper">
-      <h1 class="visually-hidden">Склад</h1>
-      <div class="page-main__header controls">
-        <header-sort />
-        <header-search
-          :search-term="searchTerm"
-          @update:serach-term="setSearchTerm"
-        />
+  <div class="lds-dual-ring" v-if="!isDataLoaded"></div>
+  <template v-else>
+    <page-header />
+    <main class="page-main">
+      <div class="page-main__wrapper">
+        <h1 class="visually-hidden">Склад</h1>
+        <div class="page-main__header controls">
+          <header-sort />
+          <header-search
+            :search-term="searchTerm"
+            @update:serach-term="setSearchTerm"
+          />
+        </div>
+        <page-catalog :offers="sortedAndSearchedOffers" />
       </div>
-      <page-catalog :offers="sortedAndSearchedOffers" />
-    </div>
-  </main>
-  <page-footer />
+    </main>
+    <page-footer />
+  </template>
 </template>
 
 <script>
