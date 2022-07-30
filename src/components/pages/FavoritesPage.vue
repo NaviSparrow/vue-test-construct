@@ -5,10 +5,6 @@
       <h1 class="visually-hidden">Сделки</h1>
       <div class="page-main__header controls">
         <header-sort />
-        <!--        <header-search-->
-        <!--          :search-term="searchTerm"-->
-        <!--          @update:serach-term="setSearchTerm"-->
-        <!--        />-->
       </div>
       <page-catalog :offers="sortedFavoritesOffers" />
     </div>
