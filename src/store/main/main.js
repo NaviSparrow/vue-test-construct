@@ -89,7 +89,7 @@ export const Main = {
           fakejson.offers.filter((offer) => offer.isFavorite)
         );
         commit("setIsDataLoaded", true);
-      }, 1000);
+      }, 2000);
     },
   },
   namespaced: true,
