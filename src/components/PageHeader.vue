@@ -9,10 +9,12 @@
               navigation__item: true,
               'navigation__item--active': isFavorites,
             }"
-            @click="() => this.setCurrentPage('favorite')"
-            @click.prevent="$router.push('/favorites')"
           >
-            <a href="#" class="navigation__link">
+            <router-link
+              :to="{ name: 'favorites' }"
+              class="navigation__link"
+              @click.prevent="() => this.setCurrentPage('favorite')"
+            >
               <svg
                 class="navigation__link-icon"
                 width="16"
@@ -23,17 +25,19 @@
                 <use href="images/svg/header-menu.svg#favorites"></use>
               </svg>
               <span class="navigation__label">Избранное</span>
-            </a>
+            </router-link>
           </li>
           <li
             :class="{
               navigation__item: true,
               'navigation__item--active': isStorage,
             }"
-            @click="() => this.setCurrentPage('storage')"
-            @click.prevent="$router.push('/')"
           >
-            <a href="#" class="navigation__link">
+            <router-link
+              :to="{ name: 'storage' }"
+              class="navigation__link"
+              @click.prevent="() => this.setCurrentPage('storage')"
+            >
               <svg
                 class="navigation__link-icon"
                 width="18"
@@ -44,17 +48,19 @@
                 <use href="images/svg/header-menu.svg#storage"></use>
               </svg>
               <span class="navigation__label">Склад</span>
-            </a>
+            </router-link>
           </li>
           <li
             :class="{
               navigation__item: true,
               'navigation__item--active': isDeals,
             }"
-            @click="() => this.setCurrentPage('deals')"
-            @click.prevent="$router.push('/deals')"
           >
-            <a href="#" class="navigation__link">
+            <router-link
+              :to="{ name: 'deals' }"
+              class="navigation__link"
+              @click.prevent="() => this.setCurrentPage('deals')"
+            >
               <svg
                 class="navigation__link-icon"
                 width="18"
@@ -65,7 +71,7 @@
                 <use href="images/svg/header-menu.svg#deal"></use>
               </svg>
               <span class="navigation__label">Сделки</span>
-            </a>
+            </router-link>
           </li>
         </ul>
       </div>
@@ -97,9 +103,6 @@ export default {
     ...mapMutations({
       setCurrentPage: "main/setCurrentPage",
     }),
-  },
-  routeClickHandler(name) {
-    console.log(name);
   },
 };
 </script>

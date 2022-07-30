@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import { mapState, mapGetters, mapActions, mapMutations } from "vuex";
+import { mapState, mapGetters, mapMutations } from "vuex";
 import PageHeader from "@/components/PageHeader";
 import HeaderSort from "@/components/HeaderSort";
 import HeaderSearch from "@/components/HeaderSearch";
@@ -41,16 +41,8 @@ export default {
   methods: {
     ...mapMutations({
       setSearchTerm: "main/setSearchTerm",
-      setCurrentPage: "main/setCurrentPage",
     }),
-    ...mapActions({
-      fetchOffers: "main/fetchOffers",
-    }),
-  },
-  mounted() {
-    this.fetchOffers();
   },
 };
 </script>
-
 <style scoped></style>
