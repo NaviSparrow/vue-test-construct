@@ -6,7 +6,11 @@
       <div class="page-main__header controls">
         <header-sort />
       </div>
-      <page-catalog :offers="sortedDealOffers" />
+      <page-catalog
+        :offers="sortedDealOffers"
+        v-if="sortedDealOffers.length > 0"
+      />
+      <p v-else>Вы ничего не добавили в сделки</p>
     </div>
   </main>
   <page-footer />

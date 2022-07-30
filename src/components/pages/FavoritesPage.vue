@@ -6,7 +6,11 @@
       <div class="page-main__header controls">
         <header-sort />
       </div>
-      <page-catalog :offers="sortedFavoritesOffers" />
+      <page-catalog
+        :offers="sortedFavoritesOffers"
+        v-if="sortedFavoritesOffers.length"
+      />
+      <p v-else>Вы ничего не добавили в избранное</p>
     </div>
   </main>
   <page-footer />
