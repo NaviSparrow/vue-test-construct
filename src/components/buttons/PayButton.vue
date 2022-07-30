@@ -16,6 +16,13 @@ export default {
   name: "AddToDealsButton",
   props: {
     isPaid: Boolean,
+    isDeal: Boolean,
+  },
+  methods: {
+    isShow() {
+      console.log("istrue");
+      return (this.isTrue = !this.isTrue);
+    },
   },
 };
 </script>
