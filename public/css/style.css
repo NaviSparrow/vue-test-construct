@@ -36,6 +36,12 @@ body {
     font-style: normal;
 }
 
+@media (max-width: 394px) {
+    body {
+        padding: 15px;
+    }
+}
+
 .container {
     display: flex;
     flex-direction: column;
@@ -322,7 +328,7 @@ body {
 
 @media (max-width: 340px) {
     .catalog {
-        font-size: 10px;
+        font-size: 12px;
     }
 }
 
@@ -380,6 +386,12 @@ body {
     line-height: 19px;
 }
 
+@media (max-width: 394px) {
+    .offer__title{
+        margin-bottom: 10px;
+    }
+}
+
 .offer__location {
     margin: 0 0 12px 0;
     padding: 5px 5px 5px 27px;
@@ -391,6 +403,12 @@ body {
     background-size: 10px 14px;
     background-position: center left 10px;
     color: #616CA5;
+}
+
+@media (max-width: 394px) {
+    .offer__location{
+        margin-bottom: 9px;
+    }
 }
 
 .offer__dealer {
@@ -469,6 +487,12 @@ body {
     padding: 17px 35px;
 }
 
+@media (max-width: 956px) {
+    .offer__add-deal-button {
+        margin: 0;
+    }
+}
+
 .offer__favorite-button {
     padding: 17px 17px;
     margin-left: 12px;
@@ -526,7 +550,7 @@ body {
     .offer__button-wrapper {
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        justify-content: space-between;
         align-items: center;
     }
     .offer__add-deal-button {
@@ -536,8 +560,32 @@ body {
     }
 
     .offer__favorite-button {
+        display: flex;
+        justify-content: center;
+        position: relative;
         padding: 17px 35px;
         width: 100%;
+    }
+
+    .offer__favorite-button svg {
+        width: 20px;
+        height: 20px;
+        opacity: 0;
+    }
+
+     .offer__favorite-button:before {
+         content: "В избранное";
+         position: absolute;
+     }
+
+     .offer__favorite-button--active:before {
+         opacity: 0;
+     }
+
+    .offer__favorite-button--active svg {
+        width: 20px;
+        height: 20px;
+        opacity: 1;
     }
 }
 
