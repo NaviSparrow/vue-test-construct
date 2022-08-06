@@ -10,8 +10,7 @@ export default {
       fetchOffers: "main/fetchOffers",
     }),
   },
-  created() {
-    console.log("46464654564");
+  mounted() {
     this.fetchOffers();
   },
 };
