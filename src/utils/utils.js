@@ -9,3 +9,5 @@ export const Sort = {
   DirectSale: "Разовая продажа",
   Auction: "Аукцион",
 };
+
+export const MAX_TEXT_SIZE = 229;
