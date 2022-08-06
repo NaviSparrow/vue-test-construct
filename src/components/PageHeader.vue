@@ -36,7 +36,7 @@
             <router-link
               :to="{ name: 'storage' }"
               class="navigation__link"
-              @click.prevent="() => this.setCurrentPage('storage')"
+              @click.prevent="() => setCurrentPage('storage')"
             >
               <svg
                 class="navigation__link-icon"
@@ -59,7 +59,7 @@
             <router-link
               :to="{ name: 'deals' }"
               class="navigation__link"
-              @click.prevent="() => this.setCurrentPage('deals')"
+              @click.prevent="() => setCurrentPage('deals')"
             >
               <svg
                 class="navigation__link-icon"
