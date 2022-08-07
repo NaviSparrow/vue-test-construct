@@ -1,6 +1,5 @@
 <template>
   <button
-    @click="$emit('dataChange', 'isFavorite', !isFavorite)"
     :class="{
       'offer__favorite-button button': true,
       'offer__favorite-button--small': isDealsPage,
@@ -25,21 +24,16 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
-import { Navigation } from "@/utils/utils";
+import useNavigation from "@/hooks/useNavigation";
 
 export default {
-  name: "AddToFavoritesButton",
+  name: "FavoriteButton",
   props: {
     isFavorite: Boolean,
   },
-  computed: {
-    ...mapState({
-      currentPage: (state) => state.main.currentPage,
-    }),
-    isDealsPage() {
-      return this.currentPage === Navigation.Deals;
-    },
+  setup() {
+    const { isDealsPage } = useNavigation();
+    return { isDealsPage };
   },
 };
 </script>

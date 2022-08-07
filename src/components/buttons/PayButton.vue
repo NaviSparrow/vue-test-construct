@@ -1,6 +1,5 @@
 <template>
   <button
-    @click="$emit('dataChange', 'isPaid', !isPaid)"
     :class="{
       'offer__pay-button button': !isPaid,
       'offer__pay-button button offer__pay-button--disabled': isPaid,
@@ -13,7 +12,7 @@
 
 <script>
 export default {
-  name: "AddToDealsButton",
+  name: "PayButton",
   props: {
     isPaid: Boolean,
     isDeal: Boolean,

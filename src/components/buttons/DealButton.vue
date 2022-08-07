@@ -1,12 +1,12 @@
 <template>
   <button class="offer__add-deal-button button" type="button">
-    Добавить в сделки
+    {{ isDeal ? "В сделках" : "Добавить в сделки" }}
   </button>
 </template>
 
 <script>
 export default {
-  name: "AddToDealsButton",
+  name: "DealButton",
   props: {
     isDeal: Boolean,
   },
