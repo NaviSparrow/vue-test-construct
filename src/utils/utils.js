@@ -1,7 +1,13 @@
 export const Navigation = {
-  Favorite: "favorite",
+  Favorite: "favorites",
   Storage: "storage",
   Deals: "deals",
+};
+
+export const AppRoute = {
+  Root: "/",
+  Favorite: "/favorites",
+  Deals: "/deals",
 };
 
 export const Sort = {
