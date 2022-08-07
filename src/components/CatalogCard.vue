@@ -18,7 +18,7 @@
           <span class="offer__product-type">Вид товара</span>
           {{ offer.productType }}
         </p>
-        <p class="offer__description">{{ showDescription }}</p>
+        <p class="offer__description">{{ formatedDescription }}</p>
       </div>
     </div>
     <div class="offer__secondary-info">
@@ -45,7 +45,7 @@
 
 <script>
 import CardButtons from "@/components/CardButtons";
-import { MAX_TEXT_SIZE } from "@/utils/utils";
+import useCatalogCard from "@/hooks/useCatalogCard";
 export default {
   name: "CatalogCard",
   components: { CardButtons },
@@ -54,13 +54,9 @@ export default {
       type: Object,
     },
   },
-  computed: {
-    showDescription() {
-      if (this.offer.description.length > MAX_TEXT_SIZE) {
-        return `${this.offer.description.slice(0, MAX_TEXT_SIZE)}...`;
-      }
-      return this.offer.description;
-    },
+  setup(props) {
+    const { formatedDescription } = useCatalogCard(props);
+    return { formatedDescription };
   },
 };
 </script>
