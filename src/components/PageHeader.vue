@@ -7,13 +7,13 @@
           <li
             :class="{
               navigation__item: true,
-              'navigation__item--active': isFavorites,
+              'navigation__item--active': isFavoritePage,
             }"
           >
             <router-link
-              :to="{ name: 'favorites' }"
+              :to="{ name: Navigation.Favorite }"
               class="navigation__link"
-              @click.prevent="() => this.setCurrentPage('favorite')"
+              @click="() => setCurrentPage(Navigation.Favorite)"
             >
               <svg
                 class="navigation__link-icon"
@@ -30,13 +30,13 @@
           <li
             :class="{
               navigation__item: true,
-              'navigation__item--active': isStorage,
+              'navigation__item--active': isStoragePage,
             }"
           >
             <router-link
-              :to="{ name: 'storage' }"
+              :to="{ name: Navigation.Storage }"
               class="navigation__link"
-              @click.prevent="() => setCurrentPage('storage')"
+              @click="() => setCurrentPage(Navigation.Storage)"
             >
               <svg
                 class="navigation__link-icon"
@@ -53,13 +53,13 @@
           <li
             :class="{
               navigation__item: true,
-              'navigation__item--active': isDeals,
+              'navigation__item--active': isDealsPage,
             }"
           >
             <router-link
-              :to="{ name: 'deals' }"
+              :to="{ name: Navigation.Deals }"
               class="navigation__link"
-              @click.prevent="() => setCurrentPage('deals')"
+              @click="() => setCurrentPage(Navigation.Deals)"
             >
               <svg
                 class="navigation__link-icon"
@@ -80,29 +80,26 @@
 </template>
 
 <script>
-import { mapMutations, mapState } from "vuex";
-import { Navigation } from "@/utils/utils";
+/* eslint-disable prettier/prettier */
+import useNavigation from "@/hooks/useNavigation";
 
 export default {
   name: "PageHeader",
-  computed: {
-    ...mapState({
-      currentPage: (state) => state.main.currentPage,
-    }),
-    isFavorites() {
-      return this.currentPage === Navigation.Favorite;
-    },
-    isStorage() {
-      return this.currentPage === Navigation.Storage;
-    },
-    isDeals() {
-      return this.currentPage === Navigation.Deals;
-    },
-  },
-  methods: {
-    ...mapMutations({
-      setCurrentPage: "main/setCurrentPage",
-    }),
+  setup() {
+    const {
+      setCurrentPage,
+      isDealsPage,
+      isFavoritePage,
+      isStoragePage,
+      Navigation
+    } = useNavigation();
+    return {
+      setCurrentPage,
+      isDealsPage,
+      isFavoritePage,
+      isStoragePage,
+      Navigation
+    };
   },
 };
 </script>
