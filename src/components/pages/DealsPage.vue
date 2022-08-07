@@ -9,16 +9,15 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
 import PageCatalog from "@/components/PageCatalog";
 import PageLayout from "@/components/pages/PageLayout";
+import useDealsPage from "@/hooks/useDealsPage";
 
 export default {
   components: { PageLayout, PageCatalog },
-  computed: {
-    ...mapGetters({
-      sortedDealOffers: "main/sortedDealOffers",
-    }),
+  setup() {
+    const { sortedDealOffers } = useDealsPage();
+    return { sortedDealOffers };
   },
 };
 </script>

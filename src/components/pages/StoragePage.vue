@@ -1,34 +1,25 @@
 <template>
-  <div class="lds-dual-ring" v-if="!isDataLoaded"></div>
-  <template v-else>
-    <page-layout>
-      <page-catalog :offers="sortedAndSearchedOffers" />
-    </page-layout>
-  </template>
+  <page-loader v-if="!isDataLoaded" />
+  <page-layout v-else>
+    <page-catalog :offers="sortedAndSearchedOffers" />
+  </page-layout>
 </template>
 
 <script>
-import { mapState, mapGetters, mapMutations } from "vuex";
 import PageCatalog from "@/components/PageCatalog";
 import PageLayout from "@/components/pages/PageLayout";
+import useStoragePage from "@/hooks/useStoragePage";
+import PageLoader from "@/components/PageLoader";
 
 export default {
   components: {
+    PageLoader,
     PageLayout,
     PageCatalog,
   },
-  computed: {
-    ...mapState({
-      isDataLoaded: (state) => state.main.isDataLoaded,
-    }),
-    ...mapGetters({
-      sortedAndSearchedOffers: "main/sortedAndSearchedOffers",
-    }),
-  },
-  methods: {
-    ...mapMutations({
-      setSearchTerm: "main/setSearchTerm",
-    }),
+  setup() {
+    const { isDataLoaded, sortedAndSearchedOffers } = useStoragePage();
+    return { isDataLoaded, sortedAndSearchedOffers };
   },
 };
 </script>

@@ -9,16 +9,15 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
 import PageCatalog from "@/components/PageCatalog";
 import PageLayout from "@/components/pages/PageLayout";
+import useFavoritePage from "@/hooks/useFavoritePage";
 
 export default {
   components: { PageLayout, PageCatalog },
-  computed: {
-    ...mapGetters({
-      sortedFavoritesOffers: "main/sortedFavoritesOffers",
-    }),
+  setup() {
+    const { sortedFavoritesOffers } = useFavoritePage();
+    return { sortedFavoritesOffers };
   },
 };
 </script>
