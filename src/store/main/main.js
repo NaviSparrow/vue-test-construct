@@ -54,13 +54,13 @@ export const Main = {
     setFavoriteOffers(state, payload) {
       state.favoriteOffers = payload;
     },
-    changeList(state, payload) {
+    changeCardData(state, payload) {
       const index = state.offersList.findIndex(
         (offer) => offer.id === payload.id
       );
       state.offersList[index] = {
         ...state.offersList[index],
-        [payload.prop]: payload.newValue,
+        [payload.prop]: payload.value,
       };
     },
     setIsDataLoaded(state, payload) {
@@ -90,6 +90,9 @@ export const Main = {
         );
         commit("setIsDataLoaded", true);
       }, 2000);
+    },
+    changeData({ commit }, data) {
+      commit("changeCardData", data);
     },
   },
   namespaced: true,

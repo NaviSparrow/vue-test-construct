@@ -2,21 +2,22 @@ import { createRouter, createWebHashHistory } from "vue-router";
 import StoragePage from "@/components/pages/StoragePage";
 import BusinessPage from "@/components/pages/DealsPage";
 import FavoritesPage from "@/components/pages/FavoritesPage";
+import { AppRoute, Navigation } from "@/utils/utils";
 
 const routes = [
   {
-    path: "/",
-    name: "storage",
+    path: AppRoute.Root,
+    name: Navigation.Storage,
     component: StoragePage,
   },
   {
-    path: "/deals",
-    name: "deals",
+    path: AppRoute.Deals,
+    name: Navigation.Deals,
     component: BusinessPage,
   },
   {
-    path: "/favorites",
-    name: "favorites",
+    path: AppRoute.Favorite,
+    name: Navigation.Favorite,
     component: FavoritesPage,
   },
 ];

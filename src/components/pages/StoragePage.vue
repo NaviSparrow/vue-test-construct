@@ -1,46 +1,25 @@
 <template>
-  <div class="lds-dual-ring" v-if="!isDataLoaded"></div>
-  <template v-else>
-    <page-header />
-    <main class="page-main">
-      <div class="page-main__wrapper">
-        <h1 class="visually-hidden">Склад</h1>
-        <div class="page-main__header controls">
-          <header-sort />
-          <header-search
-            :search-term="searchTerm"
-            @update:serach-term="setSearchTerm"
-          />
-        </div>
-        <page-catalog :offers="sortedAndSearchedOffers" />
-      </div>
-    </main>
-    <page-footer />
-  </template>
+  <page-loader v-if="!isDataLoaded" />
+  <page-layout v-else>
+    <page-catalog :offers="sortedAndSearchedOffers" />
+  </page-layout>
 </template>
 
 <script>
-import { mapState, mapGetters, mapMutations } from "vuex";
-import PageHeader from "@/components/PageHeader";
-import HeaderSort from "@/components/HeaderSort";
-import HeaderSearch from "@/components/HeaderSearch";
 import PageCatalog from "@/components/PageCatalog";
-import PageFooter from "@/components/PageFooter";
+import PageLayout from "@/components/pages/PageLayout";
+import useStoragePage from "@/hooks/useStoragePage";
+import PageLoader from "@/components/PageLoader";
 
 export default {
-  components: { PageFooter, PageCatalog, HeaderSearch, HeaderSort, PageHeader },
-  computed: {
-    ...mapState({
-      isDataLoaded: (state) => state.main.isDataLoaded,
-    }),
-    ...mapGetters({
-      sortedAndSearchedOffers: "main/sortedAndSearchedOffers",
-    }),
+  components: {
+    PageLoader,
+    PageLayout,
+    PageCatalog,
   },
-  methods: {
-    ...mapMutations({
-      setSearchTerm: "main/setSearchTerm",
-    }),
+  setup() {
+    const { isDataLoaded, sortedAndSearchedOffers } = useStoragePage();
+    return { isDataLoaded, sortedAndSearchedOffers };
   },
 };
 </script>

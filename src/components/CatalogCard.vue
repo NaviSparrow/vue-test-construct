@@ -18,7 +18,7 @@
           <span class="offer__product-type">Вид товара</span>
           {{ offer.productType }}
         </p>
-        <p class="offer__description">{{ showDescription }}</p>
+        <p class="offer__description">{{ formatedDescription }}</p>
       </div>
     </div>
     <div class="offer__secondary-info">
@@ -33,58 +33,30 @@
           <dd class="details__description">{{ offer.priceForOne }} ₽</dd>
         </div>
       </dl>
-      <div class="offer__button-wrapper">
-        <add-to-deals-button
-          @click="dealClickHandler"
-          :is-deal="offer.isDeal"
-        />
-        <add-to-favorites-button
-          @click="favoriteClickHandler"
-          :is-favorite="offer.isFavorite"
-        />
-      </div>
+      <card-buttons
+        :card-id="offer.id"
+        :is-favorite="offer.isFavorite"
+        :is-deal="offer.isDeal"
+        :is-paid="offer.isPaid"
+      />
     </div>
   </article>
 </template>
 
 <script>
-import AddToFavoritesButton from "@/components/buttons/AddToFavoritesButton";
-import AddToDealsButton from "@/components/buttons/AddToDealsButton";
-import { mapMutations } from "vuex";
+import CardButtons from "@/components/CardButtons";
+import useCatalogCard from "@/hooks/useCatalogCard";
 export default {
-  name: "StorageCard",
-  components: { AddToDealsButton, AddToFavoritesButton },
+  name: "CatalogCard",
+  components: { CardButtons },
   props: {
     offer: {
       type: Object,
     },
   },
-  computed: {
-    showDescription() {
-      if (this.offer.description.length > 229) {
-        return `${this.offer.description.slice(0, 229)}...`;
-      }
-      return this.offer.description;
-    },
-  },
-  methods: {
-    ...mapMutations({
-      changeList: "main/changeList",
-    }),
-    dealClickHandler() {
-      return this.changeList({
-        id: this.offer.id,
-        prop: "isDeal",
-        newValue: !this.offer.isDeal,
-      });
-    },
-    favoriteClickHandler() {
-      return this.changeList({
-        id: this.offer.id,
-        prop: "isFavorite",
-        newValue: !this.offer.isFavorite,
-      });
-    },
+  setup(props) {
+    const { formatedDescription } = useCatalogCard(props);
+    return { formatedDescription };
   },
 };
 </script>

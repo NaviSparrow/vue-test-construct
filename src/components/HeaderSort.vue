@@ -8,8 +8,8 @@
             sort__button: true,
             'sort__button--active': isCurrentSortAll,
           }"
-          @click="buttonClickHandled"
-          value="Все типы"
+          @click="(evt) => setCurrentSort(evt.target.value)"
+          :value="Sort.All"
         >
           Все типы
         </button>
@@ -20,8 +20,8 @@
             sort__button: true,
             'sort__button--active': isCurrentSortDirectSale,
           }"
-          @click="buttonClickHandled"
-          value="Разовая продажа"
+          @click="(evt) => setCurrentSort(evt.target.value)"
+          :value="Sort.DirectSale"
         >
           Прямые продажи
         </button>
@@ -32,8 +32,8 @@
             sort__button: true,
             'sort__button--active': isCurrentSortAuction,
           }"
-          @click="buttonClickHandled"
-          value="Аукцион"
+          @click="(evt) => setCurrentSort(evt.target.value)"
+          :value="Sort.Auction"
         >
           Аукцион
         </button>
@@ -43,31 +43,24 @@
 </template>
 
 <script>
-import { Sort } from "@/utils/utils";
-import { mapState, mapMutations } from "vuex";
+import useSort from "@/hooks/useSort";
 export default {
   name: "HeaderSort",
-  methods: {
-    ...mapMutations({
-      setCurrentSort: "main/setCurrentSort",
-    }),
-    buttonClickHandled(evt) {
-      this.setCurrentSort(evt.target.value);
-    },
-  },
-  computed: {
-    ...mapState({
-      currentSort: (state) => state.main.currentSort,
-    }),
-    isCurrentSortAll() {
-      return this.currentSort === Sort.All;
-    },
-    isCurrentSortAuction() {
-      return this.currentSort === Sort.Auction;
-    },
-    isCurrentSortDirectSale() {
-      return this.currentSort === Sort.DirectSale;
-    },
+  setup() {
+    const {
+      Sort,
+      setCurrentSort,
+      isCurrentSortAll,
+      isCurrentSortAuction,
+      isCurrentSortDirectSale,
+    } = useSort();
+    return {
+      Sort,
+      setCurrentSort,
+      isCurrentSortAll,
+      isCurrentSortAuction,
+      isCurrentSortDirectSale,
+    };
   },
 };
 </script>
