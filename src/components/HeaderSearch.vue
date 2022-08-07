@@ -3,13 +3,13 @@
     <h2 class="visually-hidden">Поиск</h2>
     <label class="search__control">
       <input
-        v-model="currentTerm"
+        v-model="searchQuery"
         class="search__input"
         type="text"
         name="search"
       />
       <span class="visually-hidden">Поиск.</span>
-      <button class="search__button" type="button" @click="searchClickHandler">
+      <button class="search__button" type="button" @click="setSearchTerm">
         <span class="visually-hidden">Кнопка поиска.</span>
         <svg
           width="16"
@@ -31,27 +31,13 @@
 </template>
 
 <script>
-import { mapMutations, mapState } from "vuex";
+import useSearch from "@/hooks/useSearch";
 
 export default {
   name: "HeaderSearch",
-  data() {
-    return {
-      currentTerm: "",
-    };
-  },
-  computed: {
-    ...mapState({
-      searchTerm: (state) => state.main.searchTerm,
-    }),
-  },
-  methods: {
-    ...mapMutations({
-      setSearchTerm: "main/setSearchTerm",
-    }),
-    searchClickHandler() {
-      this.setSearchTerm(this.currentTerm);
-    },
+  setup() {
+    const { searchQuery, setSearchTerm } = useSearch();
+    return { searchQuery, setSearchTerm };
   },
 };
 </script>
