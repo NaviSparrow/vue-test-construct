@@ -1,3 +1,10 @@
+<script setup>
+defineProps({
+  isPaid: Boolean,
+  isDeal: Boolean,
+});
+</script>
+
 <template>
   <button
     :class="{
@@ -9,15 +16,3 @@
     {{ isPaid ? "Оплачено" : "Оплатить" }}
   </button>
 </template>
-
-<script>
-export default {
-  name: "PayButton",
-  props: {
-    isPaid: Boolean,
-    isDeal: Boolean,
-  },
-};
-</script>
-
-<style scoped></style>

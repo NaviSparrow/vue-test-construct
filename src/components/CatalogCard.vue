@@ -1,3 +1,14 @@
+<script setup>
+import CardButtons from "@/components/CardButtons";
+import useCatalogCard from "@/hooks/useCatalogCard";
+
+const props = defineProps({
+  offer: Object,
+});
+
+const { formattedDescription } = useCatalogCard(props);
+</script>
+
 <template>
   <article class="catalog-list__item offer">
     <div class="offer__main-info">
@@ -18,7 +29,7 @@
           <span class="offer__product-type">Вид товара</span>
           {{ offer.productType }}
         </p>
-        <p class="offer__description">{{ formatedDescription }}</p>
+        <p class="offer__description">{{ formattedDescription }}</p>
       </div>
     </div>
     <div class="offer__secondary-info">
@@ -42,23 +53,3 @@
     </div>
   </article>
 </template>
-
-<script>
-import CardButtons from "@/components/CardButtons";
-import useCatalogCard from "@/hooks/useCatalogCard";
-export default {
-  name: "CatalogCard",
-  components: { CardButtons },
-  props: {
-    offer: {
-      type: Object,
-    },
-  },
-  setup(props) {
-    const { formatedDescription } = useCatalogCard(props);
-    return { formatedDescription };
-  },
-};
-</script>
-
-<style scoped></style>

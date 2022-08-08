@@ -14,7 +14,6 @@ export default function useSort() {
   const isCurrentSortDirectSale = computed(() => currentSort.value === Sort.DirectSale);
 
   return {
-    Sort,
     setCurrentSort,
     isCurrentSortAll,
     isCurrentSortAuction,

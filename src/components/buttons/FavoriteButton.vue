@@ -1,3 +1,13 @@
+<script setup>
+import useNavigation from "@/hooks/useNavigation";
+
+defineProps({
+  isFavorite: Boolean,
+});
+
+const { isDealsPage } = useNavigation();
+</script>
+
 <template>
   <button
     :class="{
@@ -22,20 +32,3 @@
     </svg>
   </button>
 </template>
-
-<script>
-import useNavigation from "@/hooks/useNavigation";
-
-export default {
-  name: "FavoriteButton",
-  props: {
-    isFavorite: Boolean,
-  },
-  setup() {
-    const { isDealsPage } = useNavigation();
-    return { isDealsPage };
-  },
-};
-</script>
-
-<style scoped></style>

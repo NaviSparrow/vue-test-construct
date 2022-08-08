@@ -1,3 +1,9 @@
+<script setup>
+import useSearch from "@/hooks/useSearch";
+
+const { searchQuery, setSearchTerm } = useSearch();
+</script>
+
 <template>
   <section class="controls__search search">
     <h2 class="visually-hidden">Поиск</h2>
@@ -29,17 +35,3 @@
     </label>
   </section>
 </template>
-
-<script>
-import useSearch from "@/hooks/useSearch";
-
-export default {
-  name: "HeaderSearch",
-  setup() {
-    const { searchQuery, setSearchTerm } = useSearch();
-    return { searchQuery, setSearchTerm };
-  },
-};
-</script>
-
-<style scoped></style>
