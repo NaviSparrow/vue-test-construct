@@ -1,3 +1,15 @@
+<script setup>
+import useSort from "@/hooks/useSort";
+import { Sort } from "@/utils/utils";
+
+const {
+  setCurrentSort,
+  isCurrentSortAll,
+  isCurrentSortAuction,
+  isCurrentSortDirectSale,
+} = useSort();
+</script>
+
 <template>
   <section class="controls__sort sort">
     <h2 class="visually-hidden">Сортировка</h2>
@@ -41,28 +53,3 @@
     </ul>
   </section>
 </template>
-
-<script>
-import useSort from "@/hooks/useSort";
-export default {
-  name: "HeaderSort",
-  setup() {
-    const {
-      Sort,
-      setCurrentSort,
-      isCurrentSortAll,
-      isCurrentSortAuction,
-      isCurrentSortDirectSale,
-    } = useSort();
-    return {
-      Sort,
-      setCurrentSort,
-      isCurrentSortAll,
-      isCurrentSortAuction,
-      isCurrentSortDirectSale,
-    };
-  },
-};
-</script>
-
-<style scoped></style>
