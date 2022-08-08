@@ -1,3 +1,11 @@
+<script setup>
+import PageCatalog from "@/components/PageCatalog";
+import PageLayout from "@/components/pages/PageLayout";
+import useDealsPage from "@/hooks/useDealsPage";
+
+const { sortedDealOffers } = useDealsPage();
+</script>
+
 <template>
   <page-layout>
     <page-catalog
@@ -7,19 +15,3 @@
     <p v-else>Вы ничего не добавили в сделки</p>
   </page-layout>
 </template>
-
-<script>
-import PageCatalog from "@/components/PageCatalog";
-import PageLayout from "@/components/pages/PageLayout";
-import useDealsPage from "@/hooks/useDealsPage";
-
-export default {
-  components: { PageLayout, PageCatalog },
-  setup() {
-    const { sortedDealOffers } = useDealsPage();
-    return { sortedDealOffers };
-  },
-};
-</script>
-
-<style scoped></style>

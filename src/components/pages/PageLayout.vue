@@ -1,3 +1,13 @@
+<script setup>
+import PageFooter from "@/components/PageFooter";
+import PageHeader from "@/components/PageHeader";
+import HeaderSearch from "@/components/HeaderSearch";
+import HeaderSort from "@/components/HeaderSort";
+import useNavigation from "@/hooks/useNavigation";
+
+const { pageHeading, isStoragePage } = useNavigation();
+</script>
+
 <template>
   <page-header />
   <main class="page-main">
@@ -12,22 +22,3 @@
   </main>
   <page-footer />
 </template>
-
-<script>
-import PageFooter from "@/components/PageFooter";
-import PageHeader from "@/components/PageHeader";
-import HeaderSearch from "@/components/HeaderSearch";
-import HeaderSort from "@/components/HeaderSort";
-import useNavigation from "@/hooks/useNavigation";
-
-export default {
-  components: { PageFooter, PageHeader, HeaderSearch, HeaderSort },
-  name: "PageLayout",
-  setup() {
-    const { pageHeading, isStoragePage } = useNavigation();
-    return { pageHeading, isStoragePage };
-  },
-};
-</script>
-
-<style scoped></style>
