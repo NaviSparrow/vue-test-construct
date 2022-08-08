@@ -1,3 +1,16 @@
+<script setup>
+import useNavigation from "@/hooks/useNavigation";
+import { Navigation } from "@/utils/utils";
+
+// eslint-disable-next-line prettier/prettier
+const {
+  setCurrentPage,
+  isDealsPage,
+  isFavoritePage,
+  isStoragePage
+} = useNavigation();
+</script>
+
 <template>
   <header class="page-header">
     <div class="page-header__decor"></div>
@@ -78,30 +91,3 @@
     </nav>
   </header>
 </template>
-
-<script>
-/* eslint-disable prettier/prettier */
-import useNavigation from "@/hooks/useNavigation";
-
-export default {
-  name: "PageHeader",
-  setup() {
-    const {
-      setCurrentPage,
-      isDealsPage,
-      isFavoritePage,
-      isStoragePage,
-      Navigation
-    } = useNavigation();
-    return {
-      setCurrentPage,
-      isDealsPage,
-      isFavoritePage,
-      isStoragePage,
-      Navigation
-    };
-  },
-};
-</script>
-
-<style scoped></style>
