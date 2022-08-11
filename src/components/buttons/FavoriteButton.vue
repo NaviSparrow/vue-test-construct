@@ -11,9 +11,9 @@ const { isDealsPage } = useNavigation();
 <template>
   <button
     :class="{
-      'offer__favorite-button button': true,
-      'offer__favorite-button--small': isDealsPage,
-      'offer__favorite-button--active': isFavorite
+      [$style.button]: true,
+      [$style.smallSize]: isDealsPage,
+      [$style.active]: isFavorite
     }"
     type="button"
   >
@@ -26,3 +26,67 @@ const { isDealsPage } = useNavigation();
     </svg>
   </button>
 </template>
+
+<style module>
+.button {
+  padding: 17px 17px;
+  margin-left: 12px;
+}
+
+.button:hover {
+  box-shadow: 0 0 4px 0 #000000;
+}
+
+.button:active {
+  box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.23);
+}
+
+.button svg {
+  fill: #2d3b87;
+}
+
+.smallSize {
+  padding: 0;
+  min-width: 40px;
+  min-height: 40px;
+}
+
+.active {
+  box-shadow: 0 0 3px #ff6347ff;
+}
+
+.active svg {
+  fill: #ff6347ff;
+}
+
+@media (max-width: 394px) {
+  .button {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    padding: 17px 35px;
+    width: 100%;
+  }
+
+  .button svg {
+    width: 20px;
+    height: 20px;
+    opacity: 0;
+  }
+
+  .button:before {
+    content: "В избранное";
+    position: absolute;
+  }
+
+  .active:before {
+    opacity: 0;
+  }
+
+  .active svg {
+    width: 20px;
+    height: 20px;
+    opacity: 1;
+  }
+}
+</style>

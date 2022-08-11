@@ -15,7 +15,7 @@ const { changeCardData, isDealButtonVisible, isFavoriteButtonVisible, isPayButto
 </script>
 
 <template>
-  <div class="offer__button-wrapper">
+  <div :class="$style.wrapper">
     <deal-button
       :is-deal="isDeal"
       v-if="isDealButtonVisible"
@@ -34,3 +34,19 @@ const { changeCardData, isDealButtonVisible, isFavoriteButtonVisible, isPayButto
     />
   </div>
 </template>
+
+<style module>
+.wrapper {
+  display: flex;
+  margin-top: auto;
+}
+
+@media (max-width: 394px) {
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+</style>
