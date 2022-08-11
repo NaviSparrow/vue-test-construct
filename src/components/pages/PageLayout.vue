@@ -1,24 +1,30 @@
 <script setup>
 import PageFooter from "@/components/PageFooter";
 import PageHeader from "@/components/PageHeader";
-import HeaderSearch from "@/components/HeaderSearch";
-import HeaderSort from "@/components/HeaderSort";
 import useNavigation from "@/hooks/useNavigation";
+import PageControls from "@/components/PageControls";
 
-const { pageHeading, isStoragePage } = useNavigation();
+const { pageHeading } = useNavigation();
 </script>
 
 <template>
   <page-header />
-  <main class="page-main">
-    <div class="page-main__wrapper">
-      <h1 class="visually-hidden">{{ pageHeading }}</h1>
-      <div class="page-main__header controls">
-        <header-sort />
-        <header-search v-if="isStoragePage" />
-      </div>
-      <slot></slot>
-    </div>
+  <main :class="$style.main">
+    <h1 class="visually-hidden">{{ pageHeading }}</h1>
+    <page-controls />
+    <slot></slot>
   </main>
   <page-footer />
 </template>
+
+<style module>
+.main {
+  flex-grow: 1;
+  margin-top: 70px;
+}
+@media (max-width: 340px) {
+  .main {
+    margin-top: 20px;
+  }
+}
+</style>
