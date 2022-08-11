@@ -1,12 +1,11 @@
-/* eslint-disable prettier/prettier */
 import { computed } from "vue";
-import { Navigation } from "@/utils/utils";
 import { useStore } from "vuex";
+import { Navigation } from "@/utils/utils";
 
 export default function useNavigation() {
   const store = useStore();
   const currentPage = computed(() => store.state.main.currentPage);
-  const setCurrentPage = (newValue) => store.commit("main/setCurrentPage", newValue)
+  const setCurrentPage = (newValue) => store.commit("main/setCurrentPage", newValue);
 
   const isDealsPage = computed(() => currentPage.value === Navigation.Deals);
   const isFavoritePage = computed(() => currentPage.value === Navigation.Favorite);
@@ -26,7 +25,6 @@ export default function useNavigation() {
     isDealsPage,
     isStoragePage,
     pageHeading,
-    setCurrentPage,
-    Navigation
+    setCurrentPage
   };
 }

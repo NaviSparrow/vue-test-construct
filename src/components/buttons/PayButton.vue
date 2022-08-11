@@ -1,7 +1,7 @@
 <script setup>
 defineProps({
   isPaid: Boolean,
-  isDeal: Boolean,
+  isDeal: Boolean
 });
 </script>
 
@@ -9,7 +9,7 @@ defineProps({
   <button
     :class="{
       'offer__pay-button button': !isPaid,
-      'offer__pay-button button offer__pay-button--disabled': isPaid,
+      'offer__pay-button button offer__pay-button--disabled': isPaid
     }"
     type="button"
   >

@@ -2,7 +2,7 @@
 import useNavigation from "@/hooks/useNavigation";
 
 defineProps({
-  isFavorite: Boolean,
+  isFavorite: Boolean
 });
 
 const { isDealsPage } = useNavigation();
@@ -13,17 +13,11 @@ const { isDealsPage } = useNavigation();
     :class="{
       'offer__favorite-button button': true,
       'offer__favorite-button--small': isDealsPage,
-      'offer__favorite-button--active': isFavorite,
+      'offer__favorite-button--active': isFavorite
     }"
     type="button"
   >
-    <svg
-      width="16"
-      height="14"
-      viewBox="0 0 16 14"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
+    <svg width="16" height="14" viewBox="0 0 16 14" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path
         fill-rule="evenodd"
         clip-rule="evenodd"

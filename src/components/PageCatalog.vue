@@ -2,7 +2,7 @@
 import CatalogCard from "@/components/CatalogCard";
 
 defineProps({
-  offers: Array,
+  offers: Array
 });
 </script>
 

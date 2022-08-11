@@ -3,7 +3,7 @@ import CardButtons from "@/components/CardButtons";
 import useCatalogCard from "@/hooks/useCatalogCard";
 
 const props = defineProps({
-  offer: Object,
+  offer: Object
 });
 
 const { formattedDescription } = useCatalogCard(props);
@@ -12,13 +12,7 @@ const { formattedDescription } = useCatalogCard(props);
 <template>
   <article class="catalog-list__item offer">
     <div class="offer__main-info">
-      <img
-        class="offer__image"
-        :src="'/images/' + offer.image"
-        width="256"
-        height="256"
-        alt="Древесина."
-      />
+      <img class="offer__image" :src="'/images/' + offer.image" width="256" height="256" alt="Древесина." />
       <div class="offer__info">
         <p class="offer__type">{{ offer.type }}</p>
         <h3 class="offer__title">{{ offer.title }}</h3>
@@ -44,12 +38,7 @@ const { formattedDescription } = useCatalogCard(props);
           <dd class="details__description">{{ offer.priceForOne }} ₽</dd>
         </div>
       </dl>
-      <card-buttons
-        :card-id="offer.id"
-        :is-favorite="offer.isFavorite"
-        :is-deal="offer.isDeal"
-        :is-paid="offer.isPaid"
-      />
+      <card-buttons :card-id="offer.id" :is-favorite="offer.isFavorite" :is-deal="offer.isDeal" :is-paid="offer.isPaid" />
     </div>
   </article>
 </template>

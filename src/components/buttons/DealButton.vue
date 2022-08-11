@@ -1,6 +1,6 @@
 <script setup>
 defineProps({
-  isDeal: Boolean,
+  isDeal: Boolean
 });
 </script>
 

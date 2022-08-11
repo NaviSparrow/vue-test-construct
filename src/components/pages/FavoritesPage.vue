@@ -8,10 +8,7 @@ const { sortedFavoritesOffers } = useFavoritePage();
 
 <template>
   <page-layout>
-    <page-catalog
-      :offers="sortedFavoritesOffers"
-      v-if="sortedFavoritesOffers.length"
-    />
+    <page-catalog :offers="sortedFavoritesOffers" v-if="sortedFavoritesOffers.length" />
     <p v-else>Вы ничего не добавили в избранное</p>
   </page-layout>
 </template>

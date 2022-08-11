@@ -10,7 +10,7 @@ export const Main = {
     isDataLoaded: false,
     currentPage: Navigation.Storage,
     currentSort: Sort.All,
-    searchTerm: "",
+    searchTerm: ""
   }),
   getters: {
     getSortedOffers(state) {
@@ -18,9 +18,7 @@ export const Main = {
         if (state.currentSort === Sort.All) {
           return offers;
         }
-        return offers
-          .slice()
-          .filter((offer) => offer.type === state.currentSort);
+        return offers.slice().filter((offer) => offer.type === state.currentSort);
       };
     },
     sortedAllOffers(state, getters) {
@@ -39,10 +37,8 @@ export const Main = {
       return getters.getSortedOffers(getters.favoriteList);
     },
     sortedAndSearchedOffers(state, getters) {
-      return getters.sortedAllOffers.filter((offer) =>
-        offer.title.toLowerCase().includes(state.searchTerm.toLowerCase())
-      );
-    },
+      return getters.sortedAllOffers.filter((offer) => offer.title.toLowerCase().includes(state.searchTerm.toLowerCase()));
+    }
   },
   mutations: {
     setOffers(state, payload) {
@@ -55,12 +51,10 @@ export const Main = {
       state.favoriteOffers = payload;
     },
     changeCardData(state, payload) {
-      const index = state.offersList.findIndex(
-        (offer) => offer.id === payload.id
-      );
+      const index = state.offersList.findIndex((offer) => offer.id === payload.id);
       state.offersList[index] = {
         ...state.offersList[index],
-        [payload.prop]: payload.value,
+        [payload.prop]: payload.value
       };
     },
     setIsDataLoaded(state, payload) {
@@ -74,7 +68,7 @@ export const Main = {
     },
     setSearchTerm(state, payload) {
       state.searchTerm = payload;
-    },
+    }
   },
   actions: {
     fetchOffers({ commit }) {
@@ -93,7 +87,7 @@ export const Main = {
     },
     changeData({ commit }, data) {
       commit("changeCardData", data);
-    },
+    }
   },
-  namespaced: true,
+  namespaced: true
 };

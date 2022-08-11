@@ -8,12 +8,7 @@ const { searchQuery, setSearchTerm } = useSearch();
   <section class="controls__search search">
     <h2 class="visually-hidden">Поиск</h2>
     <label class="search__control">
-      <input
-        v-model="searchQuery"
-        class="search__input"
-        type="text"
-        name="search"
-      />
+      <input v-model="searchQuery" class="search__input" type="text" name="search" />
       <span class="visually-hidden">Поиск.</span>
       <button class="search__button" type="button" @click="setSearchTerm">
         <span class="visually-hidden">Кнопка поиска.</span>

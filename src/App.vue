@@ -7,11 +7,11 @@ import { mapActions } from "vuex";
 export default {
   methods: {
     ...mapActions({
-      fetchOffers: "main/fetchOffers",
-    }),
+      fetchOffers: "main/fetchOffers"
+    })
   },
   mounted() {
     this.fetchOffers();
-  },
+  }
 };
 </script>

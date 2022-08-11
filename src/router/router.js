@@ -8,23 +8,23 @@ const routes = [
   {
     path: AppRoute.Root,
     name: Navigation.Storage,
-    component: StoragePage,
+    component: StoragePage
   },
   {
     path: AppRoute.Deals,
     name: Navigation.Deals,
-    component: BusinessPage,
+    component: BusinessPage
   },
   {
     path: AppRoute.Favorite,
     name: Navigation.Favorite,
-    component: FavoritesPage,
-  },
+    component: FavoritesPage
+  }
 ];
 
 const router = createRouter({
   routes,
-  history: createWebHashHistory(),
+  history: createWebHashHistory()
 });
 
 export default router;
