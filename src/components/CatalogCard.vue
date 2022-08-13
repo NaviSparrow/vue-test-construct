@@ -51,6 +51,10 @@ const { formattedDescription } = useCatalogCard(props);
   border-radius: 20px;
 }
 
+.offer:not(:last-child) {
+  margin-bottom: 34px;
+}
+
 @media (max-width: 956px) {
   .offer {
     grid-template-columns: none;
@@ -108,7 +112,7 @@ const { formattedDescription } = useCatalogCard(props);
   width: max-content;
   border-radius: 5px;
   background-color: #f4f5f9;
-  background-image: url("../public/images/svg/icon-location.svg");
+  background-image: url("../../public/images/svg/icon-location.svg");
   background-repeat: no-repeat;
   background-size: 10px 14px;
   background-position: center left 10px;
