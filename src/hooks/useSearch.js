@@ -5,8 +5,7 @@ export default function useSearch() {
   const searchQuery = ref("");
   const store = useStore();
 
-  const setSearchTerm = () =>
-    store.commit("main/setSearchTerm", searchQuery.value);
+  const setSearchTerm = () => store.commit("main/setSearchTerm", searchQuery.value);
 
   return { searchQuery, setSearchTerm };
 }

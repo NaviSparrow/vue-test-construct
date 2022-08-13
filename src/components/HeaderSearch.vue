@@ -1,22 +1,18 @@
 <script setup>
 import useSearch from "@/hooks/useSearch";
+import global from "/public/css/global.module.css";
 
 const { searchQuery, setSearchTerm } = useSearch();
 </script>
 
 <template>
-  <section class="controls__search search">
-    <h2 class="visually-hidden">Поиск</h2>
-    <label class="search__control">
-      <input
-        v-model="searchQuery"
-        class="search__input"
-        type="text"
-        name="search"
-      />
-      <span class="visually-hidden">Поиск.</span>
-      <button class="search__button" type="button" @click="setSearchTerm">
-        <span class="visually-hidden">Кнопка поиска.</span>
+  <section>
+    <h2 :class="global.visuallyHidden">Поиск</h2>
+    <label :class="$style.control">
+      <input :class="$style.searchInput" type="text" name="search" v-model="searchQuery" />
+      <span :class="global.visuallyHidden">Поиск.</span>
+      <button :class="$style.applyButton" type="button" @click="setSearchTerm">
+        <span :class="global.visuallyHidden">Кнопка поиска.</span>
         <svg
           width="16"
           height="16"
@@ -35,3 +31,45 @@ const { searchQuery, setSearchTerm } = useSearch();
     </label>
   </section>
 </template>
+
+<style module>
+.control {
+  display: flex;
+  min-width: 274px;
+  padding: 4px;
+  border: 1px solid #e0e3ee;
+  border-radius: 10px;
+}
+
+.searchInput {
+  flex-grow: 1;
+  margin-right: 10px;
+  font-family: inherit;
+  font-size: 15px;
+  line-height: 100%;
+  color: #2d3b87;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.searchInput:hover {
+  background-color: rgba(245, 243, 243, 0.68);
+}
+
+.applyButton {
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 10px;
+  background-color: #2d3b87;
+}
+
+.applyButton:hover {
+  background-color: #212b64;
+}
+
+.applyButton:active {
+  background-color: #213ead;
+}
+</style>

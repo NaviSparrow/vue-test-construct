@@ -2,7 +2,7 @@
 import useNavigation from "@/hooks/useNavigation";
 
 defineProps({
-  isFavorite: Boolean,
+  isFavorite: Boolean
 });
 
 const { isDealsPage } = useNavigation();
@@ -11,13 +11,14 @@ const { isDealsPage } = useNavigation();
 <template>
   <button
     :class="{
-      'offer__favorite-button button': true,
-      'offer__favorite-button--small': isDealsPage,
-      'offer__favorite-button--active': isFavorite,
+      [$style.button]: !isFavorite,
+      [$style.smallSize]: isDealsPage,
+      [$style.active]: isFavorite
     }"
     type="button"
   >
     <svg
+      :class="isFavorite ? $style.activeIcon : $style.icon"
       width="16"
       height="14"
       viewBox="0 0 16 14"
@@ -32,3 +33,74 @@ const { isDealsPage } = useNavigation();
     </svg>
   </button>
 </template>
+
+<style module>
+.button {
+  composes: defaultButton from "/public/css/global.module.css";
+  padding: 17px 17px;
+  margin-left: 12px;
+}
+
+.button:hover {
+  box-shadow: 0 0 4px 0 #000000;
+}
+
+.button:active {
+  box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.23);
+}
+
+.active {
+  composes: button;
+  box-shadow: 0 0 3px #ff6347ff;
+}
+
+.active:hover {
+  box-shadow: 0 0 3px #ff6347ff;
+}
+
+.smallSize {
+  composes: button;
+  padding: 0;
+  min-width: 40px;
+  min-height: 40px;
+}
+
+.icon {
+  fill: #2d3b87;
+}
+.activeIcon {
+  fill: #ff6347ff;
+}
+
+@media (max-width: 394px) {
+  .button {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    padding: 12px 30px;
+    margin: 0;
+    width: 70%;
+  }
+
+  .icon {
+    width: 20px;
+    height: 20px;
+    opacity: 0;
+  }
+
+  .button:before {
+    content: "В избранное";
+    position: absolute;
+  }
+
+  .active:before {
+    opacity: 0;
+  }
+
+  .activeIcon {
+    width: 20px;
+    height: 20px;
+    opacity: 1;
+  }
+}
+</style>

@@ -40,6 +40,6 @@ export default function useCardButtons(props) {
     isPayButtonVisible,
     isFavoriteButtonVisible,
     isDealButtonVisible,
-    changeCardData,
+    changeCardData
   };
 }
