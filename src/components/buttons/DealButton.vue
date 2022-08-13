@@ -12,6 +12,7 @@ defineProps({
 
 <style module>
 .button {
+  composes: defaultButton from "/public/css/global.module.css";
   flex-grow: 1;
   max-width: 274px;
   margin: 0 auto;

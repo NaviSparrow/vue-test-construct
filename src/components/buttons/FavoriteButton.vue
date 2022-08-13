@@ -11,13 +11,20 @@ const { isDealsPage } = useNavigation();
 <template>
   <button
     :class="{
-      [$style.button]: true,
+      [$style.button]: !isFavorite,
       [$style.smallSize]: isDealsPage,
       [$style.active]: isFavorite
     }"
     type="button"
   >
-    <svg width="16" height="14" viewBox="0 0 16 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg
+      :class="isFavorite ? $style.activeIcon : $style.icon"
+      width="16"
+      height="14"
+      viewBox="0 0 16 14"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
       <path
         fill-rule="evenodd"
         clip-rule="evenodd"
@@ -29,6 +36,7 @@ const { isDealsPage } = useNavigation();
 
 <style module>
 .button {
+  composes: defaultButton from "/public/css/global.module.css";
   padding: 17px 17px;
   margin-left: 12px;
 }
@@ -41,21 +49,26 @@ const { isDealsPage } = useNavigation();
   box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.23);
 }
 
-.button svg {
-  fill: #2d3b87;
+.active {
+  composes: button;
+  box-shadow: 0 0 3px #ff6347ff;
+}
+
+.active:hover {
+  box-shadow: 0 0 3px #ff6347ff;
 }
 
 .smallSize {
+  composes: button;
   padding: 0;
   min-width: 40px;
   min-height: 40px;
 }
 
-.active {
-  box-shadow: 0 0 3px #ff6347ff;
+.icon {
+  fill: #2d3b87;
 }
-
-.active svg {
+.activeIcon {
   fill: #ff6347ff;
 }
 
@@ -64,11 +77,12 @@ const { isDealsPage } = useNavigation();
     display: flex;
     justify-content: center;
     position: relative;
-    padding: 17px 35px;
-    width: 100%;
+    padding: 12px 30px;
+    margin: 0;
+    width: 70%;
   }
 
-  .button svg {
+  .icon {
     width: 20px;
     height: 20px;
     opacity: 0;
@@ -83,7 +97,7 @@ const { isDealsPage } = useNavigation();
     opacity: 0;
   }
 
-  .active svg {
+  .activeIcon {
     width: 20px;
     height: 20px;
     opacity: 1;
