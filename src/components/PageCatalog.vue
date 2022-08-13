@@ -1,5 +1,6 @@
 <script setup>
 import CatalogCard from "@/components/CatalogCard";
+import global from "/public/css/global.module.css";
 
 defineProps({
   offers: Array
@@ -8,7 +9,7 @@ defineProps({
 
 <template>
   <section :class="$style.catalog">
-    <h2 class="visually-hidden">Каталог.</h2>
+    <h2 :class="global.visuallyHidden">Каталог.</h2>
     <div :class="$style.list">
       <catalog-card v-for="offer in offers" :offer="offer" :key="offer.id" />
     </div>

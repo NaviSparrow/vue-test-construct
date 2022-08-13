@@ -1,17 +1,18 @@
 <script setup>
 import useSearch from "@/hooks/useSearch";
+import global from "/public/css/global.module.css";
 
 const { searchQuery, setSearchTerm } = useSearch();
 </script>
 
 <template>
   <section>
-    <h2 class="visually-hidden">Поиск</h2>
+    <h2 :class="global.visuallyHidden">Поиск</h2>
     <label :class="$style.control">
       <input :class="$style.searchInput" type="text" name="search" v-model="searchQuery" />
-      <span class="visually-hidden">Поиск.</span>
+      <span :class="global.visuallyHidden">Поиск.</span>
       <button :class="$style.applyButton" type="button" @click="setSearchTerm">
-        <span class="visually-hidden">Кнопка поиска.</span>
+        <span :class="global.visuallyHidden">Кнопка поиска.</span>
         <svg
           width="16"
           height="16"

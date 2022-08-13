@@ -1,13 +1,14 @@
 <script setup>
 import useSort from "@/hooks/useSort";
 import { Sort } from "@/utils/utils";
+import global from "/public/css/global.module.css";
 
 const { sortChangeHandler, isCurrentSortAll, isCurrentSortAuction, isCurrentSortDirectSale } = useSort();
 </script>
 
 <template>
   <section :class="$style.sortContainer">
-    <h2 class="visually-hidden">Сортировка</h2>
+    <h2 :class="global.visuallyHidden">Сортировка</h2>
     <ul :class="$style.list">
       <li :class="$style.item">
         <button

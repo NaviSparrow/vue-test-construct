@@ -3,6 +3,7 @@ import PageFooter from "@/components/PageFooter";
 import PageHeader from "@/components/PageHeader";
 import useNavigation from "@/hooks/useNavigation";
 import PageControls from "@/components/PageControls";
+import global from "/public/css/global.module.css";
 
 const { pageHeading } = useNavigation();
 </script>
@@ -10,7 +11,7 @@ const { pageHeading } = useNavigation();
 <template>
   <page-header />
   <main :class="$style.main">
-    <h1 class="visually-hidden">{{ pageHeading }}</h1>
+    <h1 :class="global.visuallyHidden">{{ pageHeading }}</h1>
     <page-controls />
     <slot></slot>
   </main>
