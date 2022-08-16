@@ -1,36 +1,38 @@
-<script setup>
+<script setup lang="ts">
 import useCardButtons from "@/hooks/useCardButtons";
-import PayButton from "@/components/buttons/PayButton";
-import DealButton from "@/components/buttons/DealButton";
-import FavoriteButton from "@/components/buttons/FavoriteButton";
+import PayButton from "@/components/buttons/PayButton.vue";
+import DealButton from "@/components/buttons/DealButton.vue";
+import FavoriteButton from "@/components/buttons/FavoriteButton.vue";
 
-const props = defineProps({
-  cardId: Number,
-  isFavorite: Boolean,
-  isDeal: Boolean,
-  isPaid: Boolean
-});
+type CardButtonsProps = {
+  cardId: number;
+  isFavorite: boolean;
+  isDeal: boolean;
+  isPaid: boolean;
+};
 
-const { changeCardData, isDealButtonVisible, isFavoriteButtonVisible, isPayButtonVisible } = useCardButtons(props);
+const props = defineProps<CardButtonsProps>();
+
+const { buttonClickHandler, isDealButtonVisible, isFavoriteButtonVisible, isPayButtonVisible } = useCardButtons(props);
 </script>
 
 <template>
   <div :class="$style.wrapper">
     <deal-button
-      :is-deal="isDeal"
+      :is-deal="props.isDeal"
       v-if="isDealButtonVisible"
-      @click="() => changeCardData({ prop: 'isDeal', value: !isDeal, id: cardId })"
+      @click="() => buttonClickHandler({ id: props.cardId, key: 'isDeal', value: !props.isDeal })"
     />
     <pay-button
+      :is-deal="props.isDeal"
       v-if="isPayButtonVisible"
-      :is-deal="isDeal"
-      :is-paid="isPaid"
-      @click="() => changeCardData({ prop: 'isPaid', value: !isPaid, id: cardId })"
+      :is-paid="props.isPaid"
+      @click="() => buttonClickHandler({ id: props.cardId, key: 'isPaid', value: !props.isPaid })"
     />
     <favorite-button
       v-if="isFavoriteButtonVisible"
-      :is-favorite="isFavorite"
-      @click="() => changeCardData({ prop: 'isFavorite', value: !isFavorite, id: cardId })"
+      :is-favorite="props.isFavorite"
+      @click="() => buttonClickHandler({ id: props.cardId, key: 'isFavorite', value: !props.isFavorite })"
     />
   </div>
 </template>
