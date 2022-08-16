@@ -1,10 +1,13 @@
-<script setup>
-import CardButtons from "@/components/CardButtons";
+<script setup lang="ts">
+import CardButtons from "@/components/CardButtons.vue";
 import useCatalogCard from "@/hooks/useCatalogCard";
+import { OfferType } from "@/types/OfferType";
 
-const props = defineProps({
-  offer: Object
-});
+type CatalogCardProps = {
+  offer: OfferType;
+};
+
+const props = defineProps<CatalogCardProps>();
 
 const { formattedDescription } = useCatalogCard(props);
 </script>
@@ -12,33 +15,38 @@ const { formattedDescription } = useCatalogCard(props);
 <template>
   <article :class="$style.offer">
     <div :class="$style.mainInfo">
-      <img :class="$style.image" :src="'/images/' + offer.image" width="256" height="256" alt="Древесина." />
+      <img :class="$style.image" :src="'/images/' + props.offer.image" width="256" height="256" alt="Древесина." />
       <div>
-        <p :class="$style.type">{{ offer.type }}</p>
-        <h3 :class="$style.title">{{ offer.title }}</h3>
-        <p :class="$style.location">{{ offer.location }}</p>
+        <p :class="$style.type">{{ props.offer.type }}</p>
+        <h3 :class="$style.title">{{ props.offer.title }}</h3>
+        <p :class="$style.location">{{ props.offer.location }}</p>
         <span :class="$style.dealer">Продавец</span>
-        <span>{{ offer.dealer }}</span>
+        <span>{{ props.offer.dealer }}</span>
         <p :class="$style.productName">
           <span :class="$style.productType">Вид товара</span>
-          {{ offer.productType }}
+          {{ props.offer.productType }}
         </p>
         <p :class="$style.description">{{ formattedDescription }}</p>
       </div>
     </div>
     <div :class="$style.secondaryInfo">
-      <b :class="$style.price">{{ offer.price }} ₽</b>
+      <b :class="$style.price">{{ props.offer.price }} ₽</b>
       <dl :class="$style.details">
         <div :class="$style.detailsItem">
           <dt>Количество</dt>
-          <dd :class="$style.detailsDescription">{{ offer.amount }} шт.</dd>
+          <dd :class="$style.detailsDescription">{{ props.offer.amount }} шт.</dd>
         </div>
         <div :class="$style.detailsItem">
           <dt>Стоимость за штуку</dt>
-          <dd :class="$style.detailsDescription">{{ offer.priceForOne }} ₽</dd>
+          <dd :class="$style.detailsDescription">{{ props.offer.priceForOne }} ₽</dd>
         </div>
       </dl>
-      <card-buttons :card-id="offer.id" :is-favorite="offer.isFavorite" :is-deal="offer.isDeal" :is-paid="offer.isPaid" />
+      <card-buttons
+        :card-id="props.offer.id"
+        :is-favorite="props.offer.userInformation.isFavorite"
+        :is-deal="props.offer.userInformation.isDeal"
+        :is-paid="props.offer.userInformation.isPaid"
+      />
     </div>
   </article>
 </template>

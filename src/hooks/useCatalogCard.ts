@@ -1,7 +1,12 @@
 import { computed, toRefs } from "vue";
 import { MAX_TEXT_SIZE } from "@/utils/utils";
+import { OfferType } from "@/types/OfferType";
 
-export default function useCatalogCard(props) {
+type useCatalogCardProps = {
+  offer: OfferType;
+};
+
+export default function useCatalogCard(props: useCatalogCardProps) {
   const { offer } = toRefs(props);
   const { description } = offer.value;
 

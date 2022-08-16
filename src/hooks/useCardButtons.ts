@@ -1,13 +1,20 @@
-import { useStore } from "vuex";
 import { computed, toRefs } from "vue";
 import useNavigation from "@/hooks/useNavigation";
+import { useMainStore } from "@/store/main";
+import { NewUserInfoType } from "@/types/utils";
 
-export default function useCardButtons(props) {
+type useCardButtonsProps = {
+  isDeal: boolean;
+  isPaid: boolean;
+};
+
+export default function useCardButtons(props: useCardButtonsProps) {
   const { isDeal, isPaid } = toRefs(props);
   const { isStoragePage, isFavoritePage, isDealsPage } = useNavigation();
 
-  const store = useStore();
-  const changeCardData = (data) => store.dispatch("main/changeData", data);
+  const store = useMainStore();
+
+  const buttonClickHandler = (newUserData: NewUserInfoType): void => store.changeCardUserInfo(newUserData);
 
   const isDealButtonVisible = computed(() => {
     if (isStoragePage.value) {
@@ -40,6 +47,6 @@ export default function useCardButtons(props) {
     isPayButtonVisible,
     isFavoriteButtonVisible,
     isDealButtonVisible,
-    changeCardData
+    buttonClickHandler
   };
 }

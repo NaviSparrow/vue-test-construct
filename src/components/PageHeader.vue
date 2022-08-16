@@ -1,8 +1,8 @@
-<script setup>
+<script setup lang="ts">
 import useNavigation from "@/hooks/useNavigation";
 import { Navigation } from "@/utils/utils";
 
-const { setCurrentPage, isDealsPage, isFavoritePage, isStoragePage } = useNavigation();
+const { changePageHandler, isDealsPage, isFavoritePage, isStoragePage } = useNavigation();
 </script>
 
 <template>
@@ -15,7 +15,7 @@ const { setCurrentPage, isDealsPage, isFavoritePage, isStoragePage } = useNaviga
             <router-link
               :to="{ name: Navigation.Favorite }"
               :class="$style.menuLink"
-              @click="() => setCurrentPage(Navigation.Favorite)"
+              @click="() => changePageHandler(Navigation.Favorite)"
             >
               <svg :class="$style.linkIcon" width="16" height="14" focusable="false" role="img">
                 <use href="images/svg/header-menu.svg#favorites"></use>
@@ -27,7 +27,7 @@ const { setCurrentPage, isDealsPage, isFavoritePage, isStoragePage } = useNaviga
             <router-link
               :to="{ name: Navigation.Storage }"
               :class="$style.menuLink"
-              @click="() => setCurrentPage(Navigation.Storage)"
+              @click="() => changePageHandler(Navigation.Storage)"
             >
               <svg :class="$style.linkIcon" width="18" height="20" focusable="false" role="img">
                 <use href="images/svg/header-menu.svg#storage"></use>
@@ -35,11 +35,11 @@ const { setCurrentPage, isDealsPage, isFavoritePage, isStoragePage } = useNaviga
               <span :class="$style.menuLabel">Склад</span>
             </router-link>
           </li>
-          <li :class="{ navigation__item: true, 'navigation__item--active': isDealsPage }">
+          <li :class="isDealsPage ? [$style.menuItemActive] : [$style.menuItem]">
             <router-link
               :to="{ name: Navigation.Deals }"
               :class="$style.menuLink"
-              @click="() => setCurrentPage(Navigation.Deals)"
+              @click="() => changePageHandler(Navigation.Deals)"
             >
               <svg :class="$style.linkIcon" width="18" height="20" focusable="false" role="img">
                 <use href="images/svg/header-menu.svg#deal"></use>

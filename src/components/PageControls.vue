@@ -1,6 +1,6 @@
-<script setup>
-import HeaderSearch from "@/components/HeaderSearch";
-import HeaderSort from "@/components/HeaderSort";
+<script setup lang="ts">
+import HeaderSearch from "@/components/HeaderSearch.vue";
+import HeaderSort from "@/components/HeaderSort.vue";
 import useNavigation from "@/hooks/useNavigation";
 
 const { isStoragePage } = useNavigation();

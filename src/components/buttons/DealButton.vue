@@ -1,12 +1,16 @@
-<script setup>
-defineProps({
-  isDeal: Boolean
-});
+<script setup lang="ts">
+import { IN_DEAL_TEXT, ADD_TO_DEAL_TEXT } from "@/utils/utils";
+
+type DealButtonProps = {
+  isDeal: boolean;
+};
+
+const props = defineProps<DealButtonProps>();
 </script>
 
 <template>
   <button :class="$style.button" type="button">
-    {{ isDeal ? "В сделках" : "Добавить в сделки" }}
+    {{ props.isDeal ? IN_DEAL_TEXT : ADD_TO_DEAL_TEXT }}
   </button>
 </template>
 

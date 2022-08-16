@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import useSearch from "@/hooks/useSearch";
 import global from "/public/css/global.module.css";
 

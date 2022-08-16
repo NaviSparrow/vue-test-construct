@@ -1,11 +1,11 @@
-<script setup>
-import PageFooter from "@/components/PageFooter";
-import PageHeader from "@/components/PageHeader";
-import useNavigation from "@/hooks/useNavigation";
-import PageControls from "@/components/PageControls";
+<script setup lang="ts">
+import PageFooter from "@/components/PageFooter.vue";
+import PageHeader from "@/components/PageHeader.vue";
+import PageControls from "@/components/PageControls.vue";
 import global from "/public/css/global.module.css";
+import usePageLayout from "@/hooks/usePageLayout";
 
-const { pageHeading } = useNavigation();
+const { pageHeading } = usePageLayout();
 </script>
 
 <template>

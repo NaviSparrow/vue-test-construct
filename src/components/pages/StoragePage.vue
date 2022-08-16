@@ -1,15 +1,17 @@
-<script setup>
-import PageCatalog from "@/components/PageCatalog";
-import PageLayout from "@/components/pages/PageLayout";
-import useStoragePage from "@/hooks/useStoragePage";
-import PageLoader from "@/components/PageLoader";
+<script setup lang="ts">
+import PageCatalog from "@/components/PageCatalog.vue";
+import PageLayout from "@/components/pages/PageLayout.vue";
+import PageLoader from "@/components/PageLoader.vue";
+import { useMainStore } from "@/store/main";
+import { storeToRefs } from "pinia";
 
-const { isDataLoaded, sortedAndSearchedOffers } = useStoragePage();
+const store = useMainStore();
+const { offersWithSortAndSearch, isDataLoaded } = storeToRefs(store);
 </script>
 
 <template>
   <page-loader v-if="!isDataLoaded" />
   <page-layout v-else>
-    <page-catalog :offers="sortedAndSearchedOffers" />
+    <page-catalog :offers="offersWithSortAndSearch" />
   </page-layout>
 </template>
