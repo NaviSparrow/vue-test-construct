@@ -1,9 +1,11 @@
-<script setup>
+<script setup lang="ts">
 import useNavigation from "@/hooks/useNavigation";
 
-defineProps({
-  isFavorite: Boolean
-});
+type FavoriteButtonProps = {
+  isFavorite: boolean;
+};
+
+const props = defineProps<FavoriteButtonProps>();
 
 const { isDealsPage } = useNavigation();
 </script>
@@ -11,9 +13,9 @@ const { isDealsPage } = useNavigation();
 <template>
   <button
     :class="{
-      [$style.button]: !isFavorite,
+      [$style.button]: !props.isFavorite,
       [$style.smallSize]: isDealsPage,
-      [$style.active]: isFavorite
+      [$style.active]: props.isFavorite
     }"
     type="button"
   >

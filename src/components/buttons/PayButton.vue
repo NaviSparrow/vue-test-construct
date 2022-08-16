@@ -1,13 +1,16 @@
-<script setup>
-defineProps({
-  isPaid: Boolean,
-  isDeal: Boolean
-});
+<script setup lang="ts">
+import { IS_PAID_TEXT, NEED_TO_PAY_TEXT } from "@/utils/utils";
+
+type PayButtonProps = {
+  isPaid: boolean;
+};
+
+const props = defineProps<PayButtonProps>();
 </script>
 
 <template>
-  <button :class="isPaid ? [$style.disabled] : [$style.button]" type="button">
-    {{ isPaid ? "Оплачено" : "Оплатить" }}
+  <button :class="props.isPaid ? [$style.disabled] : [$style.button]" type="button">
+    {{ props.isPaid ? IS_PAID_TEXT : NEED_TO_PAY_TEXT }}
   </button>
 </template>
 
