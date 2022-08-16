@@ -1,13 +1,12 @@
-import { useStore } from "vuex";
 import { computed } from "vue";
 import { Sort } from "@/utils/utils";
+import { useMainStore } from "@/store/main";
 
 export default function useSort() {
-  const store = useStore();
+  const store = useMainStore();
 
-  const currentSort = computed(() => store.state.main.currentSort);
-  const setCurrentSort = (newSortValue) => store.commit("main/setCurrentSort", newSortValue);
-  const sortChangeHandler = (evt) => setCurrentSort(evt.target.value);
+  const currentSort = computed(() => store.currentSort);
+  const sortChangeHandler = (evt: Event): void => store.changeCurrentSort((evt.target as HTMLButtonElement).value);
 
   const isCurrentSortAll = computed(() => currentSort.value === Sort.All);
   const isCurrentSortAuction = computed(() => currentSort.value === Sort.Auction);
