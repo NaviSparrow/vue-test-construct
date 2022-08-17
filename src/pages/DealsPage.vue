@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import PageCatalog from "@/components/PageCatalog.vue";
-import PageLayout from "@/components/pages/PageLayout.vue";
+import PageLayout from "@/pages/PageLayout.vue";
 import { useMainStore } from "@/store/main";
 import { storeToRefs } from "pinia";
 

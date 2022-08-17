@@ -1,7 +1,7 @@
 import { createRouter, createWebHashHistory } from "vue-router";
-import StoragePage from "@/components/pages/StoragePage.vue";
-import BusinessPage from "@/components/pages/DealsPage.vue";
-import FavoritesPage from "@/components/pages/FavoritesPage.vue";
+import StoragePage from "@/pages/StoragePage.vue";
+import BusinessPage from "@/pages/DealsPage.vue";
+import FavoritesPage from "@/pages/FavoritesPage.vue";
 import { AppRoute, Navigation } from "@/utils/utils";
 
 const routes = [
