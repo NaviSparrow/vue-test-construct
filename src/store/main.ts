@@ -2,7 +2,7 @@ import { defineStore } from "pinia";
 import { Navigation, Sort } from "@/utils/utils";
 import { StateType } from "@/types/StateType";
 import { OfferListType } from "@/types/OfferType";
-import { api, apiRoute } from "@/axiosAPI/api";
+import { api, apiRoute } from "@/axios/api";
 import { NewUserInfoType, ResponseFromServerType } from "@/types/utils";
 import { AxiosResponse } from "axios";
 
