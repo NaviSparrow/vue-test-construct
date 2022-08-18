@@ -1,9 +1,11 @@
 #Pet-Project [vue-test-construct](https://vue-test-construct.vercel.app/#/)
+
+<img alt="project picture" src="public/images/project-pic.png">
 SPA on Vue3 which contains three pages: "Storage", "Favorites" and "Deals". 
 
 
 ### Stack:
-* **Vue3** Composition API
+* **Vue3**. Composition API
 * TypeScript
 * Pinia 
 * Vue Router
