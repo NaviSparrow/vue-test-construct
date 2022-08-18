@@ -13,7 +13,7 @@ type CardButtonsProps = {
 
 const props = defineProps<CardButtonsProps>();
 
-const { buttonClickHandler, isDealButtonVisible, isFavoriteButtonVisible, isPayButtonVisible } = useCardButtons(props);
+const { buttonClickHandler, isDealButtonVisible, isPayButtonVisible } = useCardButtons(props);
 </script>
 
 <template>
@@ -30,7 +30,6 @@ const { buttonClickHandler, isDealButtonVisible, isFavoriteButtonVisible, isPayB
       @click="() => buttonClickHandler({ id: props.cardId, key: 'isPaid', value: !props.isPaid })"
     />
     <favorite-button
-      v-if="isFavoriteButtonVisible"
       :is-favorite="props.isFavorite"
       @click="() => buttonClickHandler({ id: props.cardId, key: 'isFavorite', value: !props.isFavorite })"
     />
