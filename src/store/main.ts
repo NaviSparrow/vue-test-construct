@@ -51,21 +51,14 @@ export const useMainStore = defineStore("main", {
       this.searchTerm = payload;
     },
     changeCardUserInfo(payload: NewUserInfoType) {
-      let offerToChange = this.allOffersList.find((offer) => offer.id === payload.id);
-      if (offerToChange) {
-        offerToChange = {
-          ...offerToChange,
-          userInformation: {
-            ...offerToChange.userInformation,
-            [payload.key]: payload.value
-          }
-        };
-      }
+      const offerToChange = this.allOffersList.find((offer) => offer.id === payload.id);
+      if (offerToChange) offerToChange.userInformation = { ...offerToChange.userInformation, [payload.key]: payload.value };
     },
     async fetchOffersData() {
       const response: AxiosResponse<ResponseFromServerType> = await api.get(apiRoute.Offers);
       this.setOffersList(response.data.offers);
       this.isDataLoaded = true;
     }
-  }
+  },
+  persist: true
 });
