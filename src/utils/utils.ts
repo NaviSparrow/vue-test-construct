@@ -1,8 +1,8 @@
 export const MAX_TEXT_SIZE = 229;
-export const IN_DEAL_TEXT = "В сделках";
-export const ADD_TO_DEAL_TEXT = "Добавить в сделки";
-export const IS_PAID_TEXT = "Оплачено";
-export const NEED_TO_PAY_TEXT = "Оплатить";
+export const SUCCESS_DEAL_TEXT = "В сделках";
+export const ADD_DEAL_TEXT = "Добавить в сделки";
+export const SUCCESS_PAY_TEXT = "Оплачено";
+export const PAY_TEXT = "Оплатить";
 
 export const Navigation = {
   Favorite: "favorites",

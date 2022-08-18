@@ -9,7 +9,7 @@ const { searchQuery, setSearchTerm } = useSearch();
   <section>
     <h2 :class="global.visuallyHidden">Поиск</h2>
     <label :class="$style.control">
-      <input :class="$style.searchInput" type="text" name="search" v-model="searchQuery" />
+      <input :class="$style.searchInput" type="text" name="search" v-model="searchQuery" @keydown.enter="setSearchTerm" />
       <span :class="global.visuallyHidden">Поиск.</span>
       <button :class="$style.applyButton" type="button" @click="setSearchTerm">
         <span :class="global.visuallyHidden">Кнопка поиска.</span>

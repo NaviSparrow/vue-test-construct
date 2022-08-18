@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { IS_PAID_TEXT, NEED_TO_PAY_TEXT } from "@/utils/utils";
+import { SUCCESS_PAY_TEXT, PAY_TEXT } from "@/utils/utils";
 
 type PayButtonProps = {
   isPaid: boolean;
@@ -10,7 +10,7 @@ const props = defineProps<PayButtonProps>();
 
 <template>
   <button :class="props.isPaid ? [$style.disabled] : [$style.button]" type="button">
-    {{ props.isPaid ? IS_PAID_TEXT : NEED_TO_PAY_TEXT }}
+    {{ props.isPaid ? SUCCESS_PAY_TEXT : PAY_TEXT }}
   </button>
 </template>
 
@@ -31,8 +31,9 @@ const props = defineProps<PayButtonProps>();
     justify-content: center;
     position: relative;
     padding: 12px 30px;
-    width: 70%;
+    width: 90%;
     margin-bottom: 10px;
+    margin-top: 10px;
   }
 }
 

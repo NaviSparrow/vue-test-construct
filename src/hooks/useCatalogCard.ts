@@ -8,7 +8,7 @@ type useCatalogCardProps = {
 
 export default function useCatalogCard(props: useCatalogCardProps) {
   const { offer } = toRefs(props);
-  const { description } = offer.value;
+  const { description, price, amount } = offer.value;
 
   const formattedDescription = computed(() => {
     if (description.length > MAX_TEXT_SIZE) {
@@ -16,5 +16,8 @@ export default function useCatalogCard(props: useCatalogCardProps) {
     }
     return description;
   });
-  return { formattedDescription };
+
+  const defaultPrice = computed(() => Math.ceil(price / amount));
+
+  return { formattedDescription, defaultPrice };
 }

@@ -1,4 +1,4 @@
-import { createRouter, createWebHashHistory } from "vue-router";
+import { createRouter, createWebHistory } from "vue-router";
 import StoragePage from "@/pages/StoragePage.vue";
 import BusinessPage from "@/pages/DealsPage.vue";
 import FavoritesPage from "@/pages/FavoritesPage.vue";
@@ -24,7 +24,7 @@ const routes = [
 
 const router = createRouter({
   routes,
-  history: createWebHashHistory()
+  history: createWebHistory(process.env.BASE_URL)
 });
 
 export default router;

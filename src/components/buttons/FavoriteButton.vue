@@ -7,14 +7,14 @@ type FavoriteButtonProps = {
 
 const props = defineProps<FavoriteButtonProps>();
 
-const { isDealsPage } = useNavigation();
+const { isDealsPage, isFavoritePage } = useNavigation();
 </script>
 
 <template>
   <button
     :class="{
       [$style.button]: !props.isFavorite,
-      [$style.smallSize]: isDealsPage,
+      [$style.smallSize]: isDealsPage || isFavoritePage,
       [$style.active]: props.isFavorite
     }"
     type="button"
@@ -52,12 +52,16 @@ const { isDealsPage } = useNavigation();
 }
 
 .active {
+  background-color: #2d3b87;
   composes: button;
-  box-shadow: 0 0 3px #ff6347ff;
 }
 
 .active:hover {
-  box-shadow: 0 0 3px #ff6347ff;
+  box-shadow: 0 0 4px #110e0e;
+}
+
+.active:active {
+  box-shadow: none;
 }
 
 .smallSize {
@@ -70,8 +74,9 @@ const { isDealsPage } = useNavigation();
 .icon {
   fill: #2d3b87;
 }
+
 .activeIcon {
-  fill: #ff6347ff;
+  fill: #e5e5e5;
 }
 
 @media (max-width: 394px) {
@@ -81,7 +86,7 @@ const { isDealsPage } = useNavigation();
     position: relative;
     padding: 12px 30px;
     margin: 0;
-    width: 70%;
+    width: 90%;
   }
 
   .icon {
