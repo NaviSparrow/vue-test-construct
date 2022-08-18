@@ -1,16 +1,18 @@
 <script setup lang="ts">
-import { IN_DEAL_TEXT, ADD_TO_DEAL_TEXT } from "@/utils/utils";
+import { SUCCESS_DEAL_TEXT, ADD_DEAL_TEXT } from "@/utils/utils";
+import useNavigation from "@/hooks/useNavigation";
 
 type DealButtonProps = {
   isDeal: boolean;
 };
 
 const props = defineProps<DealButtonProps>();
+const { isFavoritePage } = useNavigation();
 </script>
 
 <template>
-  <button :class="$style.button" type="button">
-    {{ props.isDeal ? IN_DEAL_TEXT : ADD_TO_DEAL_TEXT }}
+  <button :class="isFavoritePage ? $style.smallSize : $style.button" type="button">
+    {{ props.isDeal ? SUCCESS_DEAL_TEXT : ADD_DEAL_TEXT }}
   </button>
 </template>
 
@@ -23,12 +25,18 @@ const props = defineProps<DealButtonProps>();
   padding: 17px 35px;
 }
 
+.smallSize {
+  composes: button;
+  min-height: 40px;
+  padding: 12px;
+}
+
 .button:hover {
   box-shadow: 0 0 4px 0 #000000;
 }
 
 button:active {
-  box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.23);
+  box-shadow: none;
 }
 
 @media (max-width: 956px) {
@@ -41,7 +49,7 @@ button:active {
   .button {
     margin: 0 0 12px 0;
     font-size: 14px;
-    width: 100%;
+    width: 90%;
   }
 }
 </style>
