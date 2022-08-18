@@ -24,6 +24,7 @@ const { isStoragePage } = useNavigation();
 @media (max-width: 640px) {
   .controls {
     flex-direction: column;
+    margin-bottom: 20px;
   }
 }
 </style>
