@@ -9,7 +9,6 @@ export type OfferType = {
   description: string;
   price: number;
   amount: number;
-  priceForOne: number;
   userInformation: {
     isFavorite: boolean;
     isDeal: boolean;
