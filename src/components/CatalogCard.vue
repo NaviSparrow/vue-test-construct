@@ -2,43 +2,46 @@
 import CardButtons from "@/components/CardButtons.vue";
 import useCatalogCard from "@/hooks/useCatalogCard";
 import { OfferType } from "@/types/OfferType";
+import { toRefs } from "vue";
 
 type CatalogCardProps = {
   offer: OfferType;
 };
 
 const props = defineProps<CatalogCardProps>();
+const { offer } = toRefs(props);
+const { image, type, title, location, dealer, productType, price, amount } = offer.value;
 
-const { formattedDescription } = useCatalogCard(props);
+const { formattedDescription, defaultPrice } = useCatalogCard(props);
 </script>
 
 <template>
   <article :class="$style.offer">
     <div :class="$style.mainInfo">
-      <img :class="$style.image" :src="'/images/' + props.offer.image" width="256" height="256" alt="Древесина." />
+      <img :class="$style.image" :src="'/images/' + image" width="256" height="256" alt="Древесина." />
       <div>
-        <p :class="$style.type">{{ props.offer.type }}</p>
-        <h3 :class="$style.title">{{ props.offer.title }}</h3>
-        <p :class="$style.location">{{ props.offer.location }}</p>
+        <p :class="$style.type">{{ type }}</p>
+        <h3 :class="$style.title">{{ title }}</h3>
+        <p :class="$style.location">{{ location }}</p>
         <span :class="$style.dealer">Продавец</span>
-        <span>{{ props.offer.dealer }}</span>
+        <span>{{ dealer }}</span>
         <p :class="$style.productName">
           <span :class="$style.productType">Вид товара</span>
-          {{ props.offer.productType }}
+          {{ productType }}
         </p>
         <p :class="$style.description">{{ formattedDescription }}</p>
       </div>
     </div>
     <div :class="$style.secondaryInfo">
-      <b :class="$style.price">{{ props.offer.price }} ₽</b>
+      <b :class="$style.price">{{ price }} ₽</b>
       <dl :class="$style.details">
         <div :class="$style.detailsItem">
           <dt>Количество</dt>
-          <dd :class="$style.detailsDescription">{{ props.offer.amount }} шт.</dd>
+          <dd :class="$style.detailsDescription">{{ amount }} шт.</dd>
         </div>
         <div :class="$style.detailsItem">
           <dt>Стоимость за штуку</dt>
-          <dd :class="$style.detailsDescription">{{ props.offer.priceForOne }} ₽</dd>
+          <dd :class="$style.detailsDescription">{{ defaultPrice }} ₽</dd>
         </div>
       </dl>
       <card-buttons
