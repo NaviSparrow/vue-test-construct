@@ -31,7 +31,8 @@ const { pageHeading } = usePageLayout();
   flex-grow: 1;
   margin-top: 70px;
 }
-@media (max-width: 340px) {
+
+@media (max-width: 640px) {
   .main {
     margin-top: 20px;
   }
