@@ -15,7 +15,7 @@ const { changePageHandler, isDealsPage, isFavoritePage, isStoragePage } = useNav
             <router-link
               :to="{ name: Navigation.Favorite }"
               :class="$style.menuLink"
-              @click="() => changePageHandler(Navigation.Favorite)"
+              @click="changePageHandler(Navigation.Favorite)"
             >
               <svg :class="$style.linkIcon" width="16" height="14" focusable="false" role="img">
                 <use href="images/svg/header-menu.svg#favorites"></use>
@@ -27,7 +27,7 @@ const { changePageHandler, isDealsPage, isFavoritePage, isStoragePage } = useNav
             <router-link
               :to="{ name: Navigation.Storage }"
               :class="$style.menuLink"
-              @click="() => changePageHandler(Navigation.Storage)"
+              @click="changePageHandler(Navigation.Storage)"
             >
               <svg :class="$style.linkIcon" width="18" height="20" focusable="false" role="img">
                 <use href="images/svg/header-menu.svg#storage"></use>
@@ -36,11 +36,7 @@ const { changePageHandler, isDealsPage, isFavoritePage, isStoragePage } = useNav
             </router-link>
           </li>
           <li :class="isDealsPage ? [$style.menuItemActive] : [$style.menuItem]">
-            <router-link
-              :to="{ name: Navigation.Deals }"
-              :class="$style.menuLink"
-              @click="() => changePageHandler(Navigation.Deals)"
-            >
+            <router-link :to="{ name: Navigation.Deals }" :class="$style.menuLink" @click="changePageHandler(Navigation.Deals)">
               <svg :class="$style.linkIcon" width="18" height="20" focusable="false" role="img">
                 <use href="images/svg/header-menu.svg#deal"></use>
               </svg>

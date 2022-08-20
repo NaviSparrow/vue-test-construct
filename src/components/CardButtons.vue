@@ -21,17 +21,17 @@ const { buttonClickHandler, isDealButtonVisible, isPayButtonVisible } = useCardB
     <deal-button
       :is-deal="props.isDeal"
       v-if="isDealButtonVisible"
-      @click="() => buttonClickHandler({ id: props.cardId, key: 'isDeal', value: !props.isDeal })"
+      @click="buttonClickHandler({ id: props.cardId, key: 'isDeal', value: !props.isDeal })"
     />
     <pay-button
       :is-deal="props.isDeal"
       v-if="isPayButtonVisible"
       :is-paid="props.isPaid"
-      @click="() => buttonClickHandler({ id: props.cardId, key: 'isPaid', value: !props.isPaid })"
+      @click="buttonClickHandler({ id: props.cardId, key: 'isPaid', value: !props.isPaid })"
     />
     <favorite-button
       :is-favorite="props.isFavorite"
-      @click="() => buttonClickHandler({ id: props.cardId, key: 'isFavorite', value: !props.isFavorite })"
+      @click="buttonClickHandler({ id: props.cardId, key: 'isFavorite', value: !props.isFavorite })"
     />
   </div>
 </template>
