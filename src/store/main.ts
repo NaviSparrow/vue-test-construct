@@ -60,5 +60,8 @@ export const useMainStore = defineStore("main", {
       this.isDataLoaded = true;
     }
   },
-  persist: true
+  persist: {
+    storage: localStorage,
+    paths: ["currentPage", "currentSort", "searchTerm"]
+  }
 });
