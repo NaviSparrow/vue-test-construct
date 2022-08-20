@@ -4,24 +4,24 @@
 
 SPA on Vue3 which contains three pages: "Storage", "Favorites" and "Deals". 
 
-On "Storage" page following actions are performed:
+**On "Storage" page following actions are performed:**
 * Sort offers by type (all, auction, direct sales);
 * Search by name;
 * Add offer to business deals;
 * Add offers to favorites.
 
-On "Deals" page following actions are performed:
+**On "Deals" page following actions are performed:**
 * Sort offers by type (all, auction, direct sales);
 * Pay for business deal;
 * Add offer to favorites.
 
-On "Favorites" page following actions are performed:
+**On "Favorites" page following actions are performed:**
 * Sort offers by type (all, auction, direct sales);
 * Pay for business deal;
 * Add offer to deals.
 
 ### Stack:
-* **Vue3**. Composition API
+* **Vue3** Composition API
 * TypeScript
 * Pinia 
 * Vue Router
