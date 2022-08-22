@@ -43,7 +43,7 @@ const { searchQuery, setSearchTerm } = useSearch();
 
 .searchInput {
   flex-grow: 1;
-  margin-right: 10px;
+  margin: 3px 20px;
   font-family: inherit;
   font-size: 15px;
   line-height: 100%;
@@ -54,7 +54,7 @@ const { searchQuery, setSearchTerm } = useSearch();
 }
 
 .searchInput:hover {
-  background-color: rgba(245, 243, 243, 0.68);
+  background-color: rgba(242, 242, 242, 0.26);
 }
 
 .applyButton {
@@ -66,10 +66,11 @@ const { searchQuery, setSearchTerm } = useSearch();
 }
 
 .applyButton:hover {
-  background-color: #212b64;
+  box-shadow: 0 0 4px #110f0f;
 }
 
 .applyButton:active {
   background-color: #213ead;
+  box-shadow: 0 0 2px #110f0f;
 }
 </style>
