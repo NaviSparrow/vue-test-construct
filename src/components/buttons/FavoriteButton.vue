@@ -20,7 +20,7 @@ const { isDealsPage, isFavoritePage } = useNavigation();
     type="button"
   >
     <svg
-      :class="isFavorite ? $style.activeIcon : $style.icon"
+      :class="props.isFavorite ? $style.activeIcon : $style.icon"
       width="16"
       height="14"
       viewBox="0 0 16 14"
@@ -41,6 +41,7 @@ const { isDealsPage, isFavoritePage } = useNavigation();
   composes: defaultButton from "/public/css/global.module.css";
   padding: 17px 17px;
   margin-left: 12px;
+  transition: all 0.4s ease-out;
 }
 
 .button:hover {
