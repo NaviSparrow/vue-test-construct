@@ -25,18 +25,14 @@ const { isFavoritePage } = useNavigation();
   padding: 17px 35px;
 }
 
-.smallSize {
-  composes: button;
-  min-height: 40px;
-  padding: 12px;
-}
-
 .button:hover {
   box-shadow: 0 0 4px 0 #000000;
 }
 
-button:active {
-  box-shadow: none;
+.smallSize {
+  composes: button;
+  min-height: 40px;
+  padding: 12px;
 }
 
 @media (max-width: 956px) {
