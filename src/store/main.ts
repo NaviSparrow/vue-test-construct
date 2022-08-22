@@ -4,7 +4,7 @@ import { StateType } from "@/types/StateType";
 import { OfferListType } from "@/types/OfferType";
 import { api, apiRoute } from "@/axios/api";
 import { NewUserInfoType, ResponseFromServerType } from "@/types/utils";
-import { AxiosResponse } from "axios";
+import axios, { AxiosError, AxiosResponse } from "axios";
 
 export const useMainStore = defineStore("main", {
   state: (): StateType => ({
@@ -55,9 +55,17 @@ export const useMainStore = defineStore("main", {
       if (offerToChange) offerToChange.userInformation = { ...offerToChange.userInformation, [payload.key]: payload.value };
     },
     async fetchOffersData() {
-      const response: AxiosResponse<ResponseFromServerType> = await api.get(apiRoute.Offers);
-      this.setOffersList(response.data.offers);
-      this.isDataLoaded = true;
+      try {
+        const response: AxiosResponse<ResponseFromServerType> = await api.get(apiRoute.Offers);
+        this.setOffersList(response.data.offers);
+        this.isDataLoaded = true;
+      } catch (err) {
+        const error = err as Error | AxiosError;
+        if (axios.isAxiosError(error)) {
+          console.error(error.status, error.config);
+        }
+        console.error(error);
+      }
     }
   },
   persist: {
