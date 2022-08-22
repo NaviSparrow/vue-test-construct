@@ -1,8 +1,8 @@
 # Pet-Project [vue-test-construct](https://vue-test-construct.vercel.app/#/)
 
-SPA on Vue3 which contains three pages: "Storage", "Favorites" and "Deals". 
-
 <img alt="project picture" src="public/images/project-pic.png">
+
+SPA on Vue3 which contains three pages: "Storage", "Favorites" and "Deals". 
 
 **On "Storage" page following actions are performed:**
 * Sort offers by type (all, auction, direct sales);
@@ -15,7 +15,7 @@ SPA on Vue3 which contains three pages: "Storage", "Favorites" and "Deals".
 * Pay for business deal;
 * Add offer to favorites.
 
-=**On "Favorites" page following actions are performed:**
+**On "Favorites" page following actions are performed:**
 * Sort offers by type (all, auction, direct sales);
 * Pay for business deal;
 * Add offer to deals.
