@@ -23,6 +23,7 @@ const props = defineProps<PayButtonProps>();
   padding: 12px;
   background-color: #69c57f;
   color: #ffffff;
+  transition: background-color 0.4s ease;
 }
 
 @media (max-width: 394px) {

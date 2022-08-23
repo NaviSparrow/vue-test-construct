@@ -41,7 +41,7 @@ const { isDealsPage, isFavoritePage } = useNavigation();
   composes: defaultButton from "/public/css/global.module.css";
   padding: 17px 17px;
   margin-left: 12px;
-  transition: all 0.4s ease-out;
+  transition: background-color 0.4s ease-out;
 }
 
 .button:hover {

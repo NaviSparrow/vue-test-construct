@@ -11,7 +11,14 @@ const { isFavoritePage } = useNavigation();
 </script>
 
 <template>
-  <button :class="isFavoritePage ? $style.smallSize : $style.button" type="button">
+  <button
+    :class="{
+      [$style.button]: !props.isDeal,
+      [$style.smallSize]: isFavoritePage,
+      [$style.active]: props.isDeal
+    }"
+    type="button"
+  >
     {{ props.isDeal ? SUCCESS_DEAL_TEXT : ADD_DEAL_TEXT }}
   </button>
 </template>
@@ -23,10 +30,30 @@ const { isFavoritePage } = useNavigation();
   max-width: 274px;
   margin: 0 auto;
   padding: 17px 35px;
+  transition: background-color 0.2s ease-out;
 }
 
 .button:hover {
   box-shadow: 0 0 4px 0 #000000;
+}
+
+.button:active {
+  box-shadow: 0 0 2px 0 #000000;
+  background-color: #dfdfe3;
+}
+
+.active {
+  composes: button;
+  background: linear-gradient(35deg, #fff, #2d3b870f, #fff 50%);
+  box-shadow: 0 0 2px 1px #2d3b87;
+}
+
+.active:hover {
+  box-shadow: 0 0 5px 0 #000000;
+}
+
+.active:active {
+  box-shadow: 0 0 3px 0 #000000;
 }
 
 .smallSize {

@@ -46,7 +46,7 @@ const { sortChangeHandler, isCurrentSortAll, isCurrentSortAuction, isCurrentSort
 
 <style module>
 .sortContainer {
-  padding: 12px;
+  padding: 0 6px;
   font-size: 15px;
   line-height: 100%;
   border: 1px solid #e0e3ee;
@@ -75,12 +75,8 @@ const { sortChangeHandler, isCurrentSortAll, isCurrentSortAuction, isCurrentSort
   display: flex;
 }
 
-.item:not(:last-child) {
-  margin-right: 12px;
-}
-
 .pickButton {
-  padding: 0;
+  padding: 12px 6px;
   border: none;
   background-color: transparent;
   color: #969dc3;
