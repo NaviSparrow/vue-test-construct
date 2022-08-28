@@ -9,7 +9,7 @@ const props = defineProps<PayButtonProps>();
 </script>
 
 <template>
-  <button :class="props.isPaid ? [$style.disabled] : [$style.button]" type="button">
+  <button :class="props.isPaid ? [$style.disabled] : [$style.button]" :disabled="props.isPaid" type="button">
     {{ props.isPaid ? SUCCESS_PAY_TEXT : PAY_TEXT }}
   </button>
 </template>
