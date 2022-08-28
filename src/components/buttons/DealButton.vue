@@ -30,7 +30,7 @@ const { isFavoritePage } = useNavigation();
   max-width: 274px;
   margin: 0 auto;
   padding: 17px 35px;
-  transition: background-color 0.2s ease-out;
+  transition: background-color 0.5s ease-in-out;
 }
 
 .button:hover {
@@ -44,8 +44,9 @@ const { isFavoritePage } = useNavigation();
 
 .active {
   composes: button;
-  background: linear-gradient(35deg, #fff, #2d3b870f, #fff 50%);
+  background: linear-gradient(0deg, #69c57f, #69c57f7a, #2d3b8700);
   box-shadow: 0 0 2px 1px #2d3b87;
+  color: #00000091;
 }
 
 .active:hover {
